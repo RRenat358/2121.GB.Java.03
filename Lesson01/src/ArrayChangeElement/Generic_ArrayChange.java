@@ -3,7 +3,7 @@ package ArrayChangeElement;
 
 import java.util.Arrays;
 
-public class Generic_ArrayChange <T>{
+public class Generic_ArrayChange <T extends Object>{
 
     private T[] obj;
 
@@ -15,9 +15,10 @@ public class Generic_ArrayChange <T>{
         return obj;
     }
 
-    public void showArr() {
-        System.out.println("Тип T: " + getObj());
+    public void showArr(Generic_ArrayChange<?> another) {
+        System.out.println("Тип T: " + another.getObj());
     }
+
 
     @Override
     public String toString() {
