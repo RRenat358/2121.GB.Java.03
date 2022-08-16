@@ -27,7 +27,8 @@ public class ArrayChangeElement {
 
 
 //        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(5);
-        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>("1");
+//        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(1,2,3);
+        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>{1,2,3};
 
 //        genInt.showArr(arrayRandom);
 
@@ -39,7 +40,16 @@ public class ArrayChangeElement {
 
 
 
+
+        showArr2(1,2,3);
+
     }
 
+
+
+    public static <T> Number showArr2(T[] arrT) {
+        System.out.println("Тип T: " + arrT);
+        return 0;
+    }
 
 }

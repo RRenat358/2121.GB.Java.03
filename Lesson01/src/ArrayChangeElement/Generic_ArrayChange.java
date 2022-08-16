@@ -7,7 +7,7 @@ public class Generic_ArrayChange <T extends Object>{
 
     private T[] obj;
 
-    public Generic_ArrayChange(T[] obj) {
+    public Generic_ArrayChange(T... obj) {
         this.obj = obj;
     }
 
