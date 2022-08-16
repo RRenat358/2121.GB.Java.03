@@ -10,6 +10,7 @@ public class ArrayChangeElement {
         int arrRandomDelta = 10;
 //        int changeElement_1 = 1;
 
+
         System.out.println("––– РандомМассив –––––––––––––––––––––––––––");
         int[] arrayRandom = new int[arrLength];
         Random random = new Random();
@@ -17,11 +18,11 @@ public class ArrayChangeElement {
             arrayRandom[i] = random.nextInt(arrRandomDelta);
         }
         //======================================================================
-        int [] intArray =
 
 
-        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(5);
-
+//        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(5);
+        Generic_ArrayChange<> genInt = new Generic_ArrayChange<>(arrayRandom);
+        genInt.showArr();
 
 
 
