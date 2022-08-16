@@ -16,8 +16,9 @@ public class Generic_ArrayChange <T>{
         return obj;
     }
 
-
-
+    public void showArr() {
+        System.out.println("Тип T: " + getObj());
+    }
 
 
 
