@@ -2,8 +2,9 @@ package ArrayChangeElement;
 
 
 import java.util.Arrays;
+import java.util.List;
 
-public class Generic_ArrayChange <T extends Object>{
+public class Generic_ArrayChange <T>{
 
     private T[] obj;
 
@@ -15,8 +16,13 @@ public class Generic_ArrayChange <T extends Object>{
         return obj;
     }
 
-    public void showArr(Generic_ArrayChange<?> another) {
-        System.out.println("Тип T: " + another.getObj());
+    public <T> void showArr2(List <T> another) {
+        System.out.println("Тип T: " + getObj().toString());
+    }
+
+    public void showArr(T... another) {
+        System.out.println("Тип T: " + another.toString());
+
     }
 
 
@@ -26,4 +32,10 @@ public class Generic_ArrayChange <T extends Object>{
                 "obj=" + Arrays.toString(obj) +
                 '}';
     }
+
+
+
+
+
+
 }

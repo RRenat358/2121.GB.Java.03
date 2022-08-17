@@ -23,17 +23,24 @@ public class ArrayChangeElement {
 
 
         //======================================================================
-        System.out.println("\n––––––––––––––––––––––––––––––\n");
+        System.out.println("\n--------------------------------------------------\n");
 
 
 //        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(5);
 //        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(1,2,3);
         Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(1,2,3);
+        System.out.println(genInt.toString());
 
 //        genInt.showArr(arrayRandom);
 
 
-//        showArr2(1,2,3);
+        genInt.showArr(1,2,3);
+
+
+        System.out.println("\n--------------------------------------------------\n");
+        Generic_ArrayChange<String> genStr = new Generic_ArrayChange<>("1","2","3");
+        System.out.println(genStr.toString());
+
 
     }
 
