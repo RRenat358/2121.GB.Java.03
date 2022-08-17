@@ -28,7 +28,7 @@ public class ArrayChangeElement {
 
 //        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(5);
 //        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(1,2,3);
-        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>{1,2,3};
+        Generic_ArrayChange<Integer> genInt = new Generic_ArrayChange<>(1,2,3);
 
 //        genInt.showArr(arrayRandom);
 
@@ -41,7 +41,7 @@ public class ArrayChangeElement {
 
 
 
-        showArr2(1,2,3);
+//        showArr2(1,2,3);
 
     }
 
