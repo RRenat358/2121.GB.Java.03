@@ -1,7 +1,8 @@
-package ArrayChangeElement;
+package LessonManual;
 
 
 
+/*
 
 public class Stats<T extends Number> {
     private T[] nums;
@@ -19,3 +20,6 @@ public class Stats<T extends Number> {
         return Math.abs(this.avg() - another.avg()) < 0.0001;
     }
 }
+*/
+
+
