@@ -33,19 +33,9 @@ public class ArrayChangeElement {
 //        genInt.showArr(arrayRandom);
 
 
-
-
-
-
-
-
-
-
 //        showArr2(1,2,3);
 
     }
-
-
 
     public static <T> Number showArr2(T[] arrT) {
         System.out.println("Тип T: " + arrT);

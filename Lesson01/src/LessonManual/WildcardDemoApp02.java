@@ -2,6 +2,8 @@ package LessonManual;
 
 import java.util.Arrays;
 
+
+/*
 class Stats {
     private double[] T = 0.0;
 
@@ -53,3 +55,7 @@ public class WildcardDemoApp {
         }
     }
 }
+
+
+
+ */

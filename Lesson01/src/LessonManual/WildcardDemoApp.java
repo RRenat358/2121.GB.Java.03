@@ -1,5 +1,7 @@
 package LessonManual;
 
+
+/*
 class Stats<T extends Number> {
     private T[] nums;
     public Stats(T[] nums) {
@@ -45,3 +47,6 @@ public class WildcardDemoApp {
         }
     }
 }
+
+
+*/
