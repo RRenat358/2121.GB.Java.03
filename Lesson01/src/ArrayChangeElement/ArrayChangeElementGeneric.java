@@ -17,7 +17,7 @@ public class ArrayChangeElementGeneric<T>{
     }
     
 
-    public void showArr(T... another) {
+    public void arrChangGen(T... another) {
         System.out.println(Arrays.toString(another));
 
     }
