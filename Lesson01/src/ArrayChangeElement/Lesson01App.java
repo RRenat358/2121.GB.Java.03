@@ -39,7 +39,7 @@ public class Lesson01App {
         System.out.println(Arrays.toString(arrChrGen.arrChangGen(arrChr, posElement_1, posElement_2)));
 
         //======================================================================
-        System.out.println("\n––– Task2. Array to ArrayList –––––––––––––––––––––––––––");
+        System.out.println("\n––– Task2. Array to ArrayList –––––––––––––––––––––––––––\n");
         System.out.println(Arrays.toString(arrInt));
 //        System.out.println(Arrays.toString((Object[]) arrToArrayList(arrInt)));
         System.out.println(arrToArrayList(arrInt));
@@ -51,6 +51,7 @@ public class Lesson01App {
     }
 
     public static <T> Object arrChang(T[] array, int posElement_1, int posElement_2) {
+        //без проверки позиций элементов для замены
         posElement_1--;
         posElement_2--;
         T temp = array[posElement_2];
