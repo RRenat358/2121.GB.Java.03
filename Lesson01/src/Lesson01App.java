@@ -1,6 +1,3 @@
-package ArrayChangeElement;
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,14 +6,14 @@ public class Lesson01App {
 
         //======================================================================
         //Ввод данных здесь
-        Integer[] arrInt = {-2, -1, 0, 1, 2, 3, 4, 5, 6}; //arrLength = 9
-        String[] arrStr = {"aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg"}; //arrLength = 7
+        Integer[] arrInt = {-2, -1, 0, 1, 2, 3, 4, 5, 6};
+        String[] arrStr = {"aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg"};
 
-        Double[] arrDb = {1.1, 2.2, 3.3, 4.4, 5.5}; //arrLength = 5
-        Character[] arrChr = {'П', 'Р', 'И', 'В', 'Е', 'Т', '!'}; //arrLength = 7
+        Double[] arrDb = {1.1, 2.2, 3.3, 4.4, 5.5};
+        Character[] arrChr = {'П', 'Р', 'И', 'В', 'Е', 'Т', '!'};
 
-        int posElement_1 = 2;
-        int posElement_2 = 5;
+        int posElement_1 = 2; // № позиции в человеко-понятном исчислении
+        int posElement_2 = 5; // № позиции в человеко-понятном исчислении
 
         //======================================================================
         System.out.println("\n––– Task1. ArrayChangeElement –––––––––––––––––––––––––––");
@@ -41,7 +38,6 @@ public class Lesson01App {
         //======================================================================
         System.out.println("\n––– Task2. Array to ArrayList –––––––––––––––––––––––––––\n");
         System.out.println(Arrays.toString(arrInt));
-//        System.out.println(Arrays.toString((Object[]) arrToArrayList(arrInt)));
         System.out.println(arrToArrayList(arrInt));
 
 
@@ -50,7 +46,7 @@ public class Lesson01App {
     }
 
     public static <T> Object arrChang(T[] array, int posElement_1, int posElement_2) {
-        //без проверки позиций элементов для замены
+        //без проверки входных позиций для элементов
         posElement_1--;
         posElement_2--;
         T temp = array[posElement_2];

@@ -1,3 +1,6 @@
+
+
+
 import java.util.ArrayList;
 
 
@@ -17,7 +20,7 @@ public class Box<T extends Fruit> {
 
     public double getWeightBox() {
         weightBoxTotal = 0.0;
-        for (T boxFruit : boxFruits) {
+        for (T boxFruit : this.boxFruits) {
             weightBoxTotal = weightBoxTotal + boxFruit.getWeight();
         }
         return weightBoxTotal;
@@ -28,18 +31,12 @@ public class Box<T extends Fruit> {
     }
 
 
-
-
-/*
-
-    public String boxToString() {
-        for (T boxFruit : boxFruits) {
-            return boxFruit.getWeight();
+    public void switchFruitInBox(Box<T> anyBox) {
+        for (T boxFruit : this.boxFruits) {
+            anyBox.addFruit(boxFruit);
         }
-
-        return 0;
+        this.boxFruits.clear();
     }
-*/
 
 
 }

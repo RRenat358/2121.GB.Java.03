@@ -1,7 +1,4 @@
-package ArrayChangeElement;
 
-
-import java.util.Arrays;
 
 
 public class ArrayChangeElementGeneric<T> {

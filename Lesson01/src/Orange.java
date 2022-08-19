@@ -10,4 +10,11 @@ public class Orange implements Fruit {
     public double getWeight() {
         return weight;
     }
+
+    @Override
+    public String fruitToString() {
+        return String.format("Один фрукт %s весит == %s", getClass().getName(), weight);
+    }
+
+
 }

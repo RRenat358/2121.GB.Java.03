@@ -11,5 +11,10 @@ public class Apple implements Fruit {
         return weight;
     }
 
+    @Override
+    public String fruitToString() {
+        return String.format("Один фрукт %s весит == %s", getClass().getName(), weight);
+    }
+
 
 }
