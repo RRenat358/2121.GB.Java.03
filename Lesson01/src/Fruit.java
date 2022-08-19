@@ -2,7 +2,7 @@
 
 public interface Fruit {
 
-    float getWeight();
+    double getWeight();
 
 
 }

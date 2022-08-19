@@ -3,11 +3,11 @@
 
 public class Apple implements Fruit{
 
-    private float weight = 2.5f;
+    private double weight = 1.5;
 
 
     @Override
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
