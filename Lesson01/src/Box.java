@@ -28,4 +28,18 @@ public class Box<T extends Fruit> {
     }
 
 
+
+
+/*
+
+    public String boxToString() {
+        for (T boxFruit : boxFruits) {
+            return boxFruit.getWeight();
+        }
+
+        return 0;
+    }
+*/
+
+
 }

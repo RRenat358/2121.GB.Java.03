@@ -8,6 +8,6 @@ public class Orange implements Fruit {
 
     @Override
     public double getWeight() {
-        return 0;
+        return weight;
     }
 }

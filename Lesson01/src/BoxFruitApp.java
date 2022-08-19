@@ -15,7 +15,10 @@ public class BoxFruitApp {
         }
 
 
-        System.out.println(boxApple.toString());
+        System.out.println("Ящик весит == " + boxApple.getWeightBox());
+        System.out.println("Ящик весит == " + boxOrange.getWeightBox());
+
+        System.out.println("Сравнение ящиков == " + boxOrange.compare(boxApple));
 
 
     }
