@@ -1,39 +1,26 @@
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class Box <T extends Fruit> {
 
-    private double weightBox = 0.0f;
+    private double weightBox = 0.0;
+    private double weightBoxTotal = 0.0;
 
-    ArrayList<T> boxFruit = new ArrayList<>();
+    ArrayList<T> boxFruits = new ArrayList<>();
 
 
     public void addFruit(T o) {
-        boxFruit.add(o);
+        boxFruits.add(o);
         this.weightBox = this.weightBox + o.getWeight();
     }
 
 
-    public double totalWeightBox() {
-        return 0;
-    }
-
-
-
-
     public double getWeightBox() {
-        weightBox = 0.0f;
-        for (T boxFruit : boxFruit) {
-            weightBox = weightBox + boxFruit.getWeight();
-
-
+        weightBoxTotal = 0.0;
+        for (T boxFruit : boxFruits) {
+            weightBoxTotal = weightBoxTotal + boxFruit.getWeight();
         }
-
-
-
-        return weightBox;
+        return weightBoxTotal;
     }
 
 
