@@ -1,7 +1,7 @@
 
 
 
-public class Apple implements Fruit{
+public class Apple implements Fruit {
 
     private double weight = 1.5;
 

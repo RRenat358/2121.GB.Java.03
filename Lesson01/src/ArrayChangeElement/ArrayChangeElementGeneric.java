@@ -4,7 +4,7 @@ package ArrayChangeElement;
 import java.util.Arrays;
 
 
-public class ArrayChangeElementGeneric<T>{
+public class ArrayChangeElementGeneric<T> {
 
     private T[] obj;
 
@@ -15,7 +15,7 @@ public class ArrayChangeElementGeneric<T>{
     public T[] getObj() {
         return obj;
     }
-    
+
 
     public T[] arrChangGen(T[] array, int posElement_1, int posElement_2) {
         posElement_1--;

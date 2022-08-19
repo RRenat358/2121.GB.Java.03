@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class Box <T extends Fruit> {
+public class Box<T extends Fruit> {
 
     private double weightBox = 0.0;
     private double weightBoxTotal = 0.0;
@@ -21,6 +21,10 @@ public class Box <T extends Fruit> {
             weightBoxTotal = weightBoxTotal + boxFruit.getWeight();
         }
         return weightBoxTotal;
+    }
+
+    public boolean compare(Box<? extends Fruit> anyBox) {
+        return Math.abs(this.getWeightBox() - anyBox.getWeightBox()) < 0.0001;
     }
 
 

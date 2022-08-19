@@ -45,7 +45,6 @@ public class Lesson01App {
         System.out.println(arrToArrayList(arrInt));
 
 
-
         System.out.println("\n––– end –––––––––––––––––––––––––––");
 
     }
@@ -62,12 +61,11 @@ public class Lesson01App {
 
     public static <T> Object arrToArrayList(T[] array) {
         ArrayList<T> arrayList = new ArrayList<T>();
-        for (T i: array){
+        for (T i : array) {
             arrayList.add(i);
         }
         return arrayList;
     }
-
 
 
 }
