@@ -1,2 +1,6 @@
-public class Fruit {
+public interface Fruit {
+
+    float getWeight();
+
+
 }
