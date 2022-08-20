@@ -14,6 +14,8 @@ public class DataBaseApp {
             clearTable();
 
             insertUser5();
+            insertUser5Batch();
+
             insertUser("Martin", "mmm");
             insertUserPrepared("Tom", "ttt");
 
@@ -68,6 +70,38 @@ public class DataBaseApp {
             statement.executeUpdate(
                     "INSERT INTO User (name, password)\n" +
                             "VALUES ('User_" + i + "', '" + i + "')");
+        }
+    }
+
+
+    //Транзакции в JDBC
+    private static void insertUser5Transaction() throws SQLException {
+        connection.setAutoCommit(false);
+        try {
+            for (int i = 1; i <= 5; i++) {
+                statement.executeUpdate(
+                        "INSERT INTO User (name, password)\n" +
+                                "VALUES ('User_" + i + "', '" + i + "')");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            connection.rollback();
+        }
+    }
+
+
+    private static void insertUser5Batch() {
+        try (PreparedStatement ps = connection.prepareStatement(
+                "INSERT INTO User (name, password)\n" +
+                        "VALUES (?, ?)")) {
+            for (int i = 1; i <= 5; i++) {
+                ps.setString(1, "User_" + i);
+                ps.setString(2, i + "");
+                ps.addBatch();
+            }
+            ps.executeBatch();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
