@@ -68,14 +68,20 @@ public class DataBaseApp {
         }
     }
 
+    private static void insertUser(String neme, String password) throws SQLException {
+        statement.executeUpdate(
+                "INSERT INTO User (name, password)\n" +
+                        "VALUES ('" + neme + ", " + password + "')");
+    }
+
     private static void readDB() {
         try (ResultSet rs = statement.executeQuery("SELECT * FROM User")) {
             while (rs.next()) {
                 System.out.println(
                         rs.getInt(1) + " " +
-                        rs.getString(2) + " " +
-                        rs.getString(3) + " " +
-                        rs.getInt(4)
+                                rs.getString(2) + " " +
+                                rs.getString(3) + " " +
+                                rs.getInt(4)
                 );
             }
         } catch (Exception ex) {
