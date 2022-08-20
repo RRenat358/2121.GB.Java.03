@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 
 public class DataBaseApp {
@@ -14,7 +11,11 @@ public class DataBaseApp {
             connect();
 
             createTable();
+            clearTable();
+
             insertUser();
+
+            readDB();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -50,7 +51,7 @@ public class DataBaseApp {
     }
 
     public static void createTable() throws SQLException {
-        statement.executeUpdate("create table if not exists User\n" +
+        statement.executeUpdate("CREATE TABLE IF NOT exists User\n" +
                 "(\n" +
                 "    id integer primary key autoincrement not null,\n" +
                 "    name text not null ,\n" +
@@ -62,13 +63,30 @@ public class DataBaseApp {
     private static void insertUser() throws SQLException {
         for (int i = 1; i <= 5; i++) {
             statement.executeUpdate(
-                    "insert into User (name, password)\n" +
-                            "values ('User_" + i + "', '" + i + "')");
+                    "INSERT INTO User (name, password)\n" +
+                            "VALUES ('User_" + i + "', '" + i + "')");
         }
     }
 
     private static void readDB() {
+        try (ResultSet rs = statement.executeQuery("SELECT * FROM User")) {
+            while (rs.next()) {
+                System.out.println(
+                        rs.getInt(1) + " " +
+                        rs.getString(2) + " " +
+                        rs.getString(3) + " " +
+                        rs.getInt(4)
+                );
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
+    public static void clearTable() throws SQLException {
+        statement.executeUpdate("DELETE FROM User");
+        //SQLite Reset Primary Key Field
+        statement.executeUpdate("DELETE FROM sqlite_sequence WHERE name='User'");
     }
 
 
