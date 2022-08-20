@@ -13,7 +13,9 @@ public class DataBaseApp {
             createTable();
             clearTable();
 
-            insertUser();
+            insertUser5();
+            insertUser("Martin", "mmm");
+            insertUserPrepared("Tom", "ttt");
 
             readDB();
 
@@ -50,6 +52,7 @@ public class DataBaseApp {
 
     }
 
+
     public static void createTable() throws SQLException {
         statement.executeUpdate("CREATE TABLE IF NOT exists User\n" +
                 "(\n" +
@@ -60,7 +63,7 @@ public class DataBaseApp {
                 ")");
     }
 
-    private static void insertUser() throws SQLException {
+    private static void insertUser5() throws SQLException {
         for (int i = 1; i <= 5; i++) {
             statement.executeUpdate(
                     "INSERT INTO User (name, password)\n" +
@@ -68,11 +71,26 @@ public class DataBaseApp {
         }
     }
 
-    private static void insertUser(String neme, String password) throws SQLException {
+
+    private static void insertUser(String name, String password) throws SQLException {
         statement.executeUpdate(
                 "INSERT INTO User (name, password)\n" +
-                        "VALUES ('" + neme + ", " + password + "')");
+                        "VALUES ('" + name + "', '" + password + "')");
     }
+
+    private static void insertUserPrepared(String name, String password) {
+        try (PreparedStatement ps = connection.prepareStatement(
+                "INSERT INTO User (name, password)\n" +
+                        "VALUES (?, ?)")) {
+            ps.setString(1, name);
+            ps.setString(2, password);
+            ps.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
 
     private static void readDB() {
         try (ResultSet rs = statement.executeQuery("SELECT * FROM User")) {
@@ -88,6 +106,7 @@ public class DataBaseApp {
             ex.printStackTrace();
         }
     }
+
 
     public static void clearTable() throws SQLException {
         statement.executeUpdate("DELETE FROM User");
