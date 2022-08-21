@@ -15,6 +15,7 @@ public class DataBaseApp {
 
             insertUser5();
             insertUser5Batch();
+            insertUser5Transaction();
 
             insertUser("Martin", "mmm");
             insertUserPrepared("Tom", "ttt");
@@ -29,7 +30,6 @@ public class DataBaseApp {
     }
 
     private static void connect() throws SQLException {
-//        connection = DriverManager.getConnection("jdbc:sqlite:javadb.db");
         connection = DriverManager.getConnection("jdbc:sqlite:Chat-220820.sqlite");
         statement = connection.createStatement();
     }
@@ -87,6 +87,7 @@ public class DataBaseApp {
             ex.printStackTrace();
             connection.rollback();
         }
+        connection.setAutoCommit(true);
     }
 
 
