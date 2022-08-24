@@ -11,7 +11,7 @@ public class WriterApp {
 
         try (Writer writer = new BufferedWriter(new FileWriter(demo4))) {
 
-            writer.write("LoveIslove\n");
+            writer.write("LoveIsLove\n");
 
         } catch (IOException e) {
             e.printStackTrace();
