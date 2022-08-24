@@ -20,7 +20,6 @@ public class BufferedIOApp {
 
         } catch (IOException ex) {
             ex.printStackTrace();
-
         }
 
 
@@ -31,7 +30,6 @@ public class BufferedIOApp {
             new FileOutputStream(demo3).close();
         } catch (IOException ex) {
             ex.printStackTrace();
-
         }
 
 
