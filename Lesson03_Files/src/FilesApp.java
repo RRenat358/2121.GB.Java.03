@@ -1,8 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 
-public class FilesApp {
 
+public class FilesApp {
 
     public static void main(String[] args) throws IOException {
 
@@ -26,6 +26,14 @@ public class FilesApp {
         System.out.println("Это директория? = " + file2.isDirectory());
 
         System.out.println("Размер файла (длина) = " + file2.length());
+
+
+        for (File f : dir01.listFiles()) {
+            if (f.isDirectory()) {
+                continue;
+            }
+            System.out.println(f.getName());
+        }
 
 
     }
