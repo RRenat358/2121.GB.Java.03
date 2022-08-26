@@ -15,6 +15,7 @@ public class FileReadLastLine {
 
     public static void main(String[] args) throws IOException {
         String pathFile = "dir01/bigFile-refactoring.txt";
+        String pathFile4 = "dir01/demo2.txt";
         int nLast = 10;
 
         System.out.println("\n");
@@ -159,7 +160,7 @@ public class FileReadLastLine {
             String lastLine;
             int countLine = 0;
 
-            while ((lastLine = readLastLine.readLine()) != null && countLine < nLast) {
+            while (countLine < nLast && (lastLine = readLastLine.readLine()) != null) {
                 arrayList.add(lastLine);
                 countLine++;
             }
@@ -167,8 +168,6 @@ public class FileReadLastLine {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-
         return arrayList;
     }
 
