@@ -34,13 +34,9 @@ public class FileIOApp {
 //            new FileOutputStream("dir01/demo2.txt").close();
             new FileOutputStream(file).close();
 
-
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-
 
 
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
@@ -52,6 +48,19 @@ public class FileIOApp {
             ex.printStackTrace();
         }
 
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
