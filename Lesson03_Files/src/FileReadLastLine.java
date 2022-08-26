@@ -2,7 +2,9 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +24,15 @@ public class FileReadLastLine {
 //        fileReadLastLines2(pathFile, nLast);
 //        fileReadLastLines3(pathFile/*, nLast*/);
 //        fileReadLastLines4(pathFile, nLast);
-        fileReadLastLines5(pathFile, nLast);
+//        System.out.println(fileReadLastLines5(pathFile, nLast));
+//        System.out.println(toString().fileReadLastLines6(pathFile, nLast).iterator());
+        ArrayList list = fileReadLastLines6(pathFile, nLast);
+        for (Object o : list) {
+            System.out.println(o);
+        }
+
+
+
 
 
         System.out.println("\n");
@@ -30,6 +40,8 @@ public class FileReadLastLine {
 
     }
 
+
+    //======================================================================
     //Прочитать весь файл по строчно
     public static void fileReadLastLines0(String pathFile, int nLast) throws IOException {
 
@@ -40,8 +52,7 @@ public class FileReadLastLine {
     }
 
 
-
-
+    //======================================================================
     public static void fileReadLastLines1(String pathFile, int nLast) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(pathFile));
 //        String oneLastLine2 = ((BufferedReader) reader).readLine();
@@ -58,7 +69,7 @@ public class FileReadLastLine {
     }
 
 
-
+    //======================================================================
     public static void fileReadLastLines2(String pathFile, int nLast) throws IOException {
         try {
             int numOfLastline = 10;
@@ -88,12 +99,15 @@ public class FileReadLastLine {
     }
 
 
+    //======================================================================
     //Прочитать весь файл по строчно
     public static void fileReadLastLines3(String pathFile, int nLast) throws IOException {
 
         Files.lines(Paths.get(pathFile), StandardCharsets.UTF_8).forEach(System.out::println);
     }
 
+
+    //======================================================================
     public static void fileReadLastLines4(String pathFile, int nLast) throws IOException {
         ArrayList<String> arrayList = new ArrayList<>();
 
@@ -115,12 +129,36 @@ public class FileReadLastLine {
     }
 
 
+    //======================================================================
     public static ArrayList fileReadLastLines5(String pathFile, int nLast) throws IOException {
         ArrayList<String> arrayList = new ArrayList<>();
         try (ReversedLinesFileReader readLastLine = new ReversedLinesFileReader(
                 new File(pathFile), StandardCharsets.UTF_8)) {
             String lastLine = "";
             int countLine = 0;
+            while ((lastLine = readLastLine.readLine()) != null && countLine < nLast) {
+//                arrayList.add("\n" + lastLine);
+                arrayList.add("\n" + lastLine);
+                countLine++;
+            }
+            Collections.reverse(arrayList);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return arrayList;
+    }
+
+
+    //======================================================================
+    public static ArrayList fileReadLastLines6(String pathFile, int nLast) throws IOException {
+        ArrayList<String> arrayList = new ArrayList<>();
+        try (ReversedLinesFileReader readLastLine = new ReversedLinesFileReader(
+                new File(pathFile), StandardCharsets.UTF_8)) {
+
+            String lastLine;
+            int countLine = 0;
+
             while ((lastLine = readLastLine.readLine()) != null && countLine < nLast) {
                 arrayList.add(lastLine);
                 countLine++;
@@ -129,8 +167,14 @@ public class FileReadLastLine {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+
         return arrayList;
     }
+
+
+
+
 
 
 
