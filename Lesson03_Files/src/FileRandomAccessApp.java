@@ -6,8 +6,8 @@ public class FileRandomAccessApp {
 
     public static void main(String[] args) throws IOException {
 
-        RandomAccessFile randomAccessFile = new RandomAccessFile("dir01/ddemo4.txt", "rw");
-        randomAccessFile.seek(50);
+        RandomAccessFile randomAccessFile = new RandomAccessFile("dir01/demo4.txt", "rw");
+        randomAccessFile.seek(2);
         System.out.println((char) randomAccessFile.read());
     }
 
