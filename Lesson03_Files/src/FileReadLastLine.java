@@ -33,9 +33,6 @@ public class FileReadLastLine {
         }
 
 
-
-
-
         System.out.println("\n");
 
 
@@ -71,7 +68,7 @@ public class FileReadLastLine {
 
 
     //======================================================================
-    public static void fileReadLastLines2(String pathFile, int nLast) throws IOException {
+    public static void fileReadLastLines2(String pathFile, int nLast) {
         try {
             int numOfLastline = 10;
             BufferedReader reader = new BufferedReader(new FileReader("Text.txt"));
@@ -109,7 +106,7 @@ public class FileReadLastLine {
 
 
     //======================================================================
-    public static void fileReadLastLines4(String pathFile, int nLast) throws IOException {
+    public static void fileReadLastLines4(String pathFile, int nLast) {
         ArrayList<String> arrayList = new ArrayList<>();
 
         try (ReversedLinesFileReader readLastLine = new ReversedLinesFileReader(
@@ -131,7 +128,7 @@ public class FileReadLastLine {
 
 
     //======================================================================
-    public static ArrayList fileReadLastLines5(String pathFile, int nLast) throws IOException {
+    public static ArrayList fileReadLastLines5(String pathFile, int nLast) {
         ArrayList<String> arrayList = new ArrayList<>();
         try (ReversedLinesFileReader readLastLine = new ReversedLinesFileReader(
                 new File(pathFile), StandardCharsets.UTF_8)) {
@@ -152,7 +149,7 @@ public class FileReadLastLine {
 
 
     //======================================================================
-    public static ArrayList fileReadLastLines6(String pathFile, int nLast) throws IOException {
+    public static ArrayList<String> fileReadLastLines6(String pathFile, int nLast) {
         ArrayList<String> arrayList = new ArrayList<>();
         try (ReversedLinesFileReader readLastLine = new ReversedLinesFileReader(
                 new File(pathFile), StandardCharsets.UTF_8)) {
@@ -172,11 +169,7 @@ public class FileReadLastLine {
     }
 
 
-
-
-
-
-
+    //======================================================================
 
 
 }
