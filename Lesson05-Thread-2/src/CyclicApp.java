@@ -29,15 +29,9 @@ public class CyclicApp {
                 } catch (Exception e) {
                     //ignore
                     e.printStackTrace();
-
                 }
-
             }).start();
         }
-
-
-
-
     }
 
 
