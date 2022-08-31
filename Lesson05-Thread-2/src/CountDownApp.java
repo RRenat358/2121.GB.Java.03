@@ -5,7 +5,7 @@ public class CountDownApp {
 
     private static Random random = new Random();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         CountDownLatch countDownLatch = new CountDownLatch(5);
 
@@ -27,6 +27,10 @@ public class CountDownApp {
 
         //Ждём всех
         countDownLatch.await();
+
+        System.out.println("Работа завершена");
+
+
     }
 
 }
