@@ -4,13 +4,11 @@ public class CounterApp {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Counter counter = new Counter();
-
-
+        DoubleCouter doubleCouter = new DoubleCouter();
 
         AtomicInteger atomicInteger = new AtomicInteger(0);
-
 
         Runnable runnable = new Runnable() {
             @Override
@@ -18,14 +16,29 @@ public class CounterApp {
                 for (int i = 0; i < 10000; i++) {
                     atomicInteger.incrementAndGet();
                     counter.increment();
+                    doubleCouter.incrementFirst();
+                    if (i % 2 == 0) {
+                        doubleCouter.incrementSecond();
+                    }
 
-
-
+                    synchronized (doubleCouter) {
+                        doubleCouter.incrementFirst();
+                        doubleCouter.incrementSecond();
+                    }
                 }
             }
         };
 
+        Thread t1 = new Thread(runnable);
+        Thread t2 = new Thread(runnable);
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
 
+        System.out.println(counter.getValue());
+        System.out.println(atomicInteger.get());
+        System.out.println(doubleCouter.toString());
     }
 
 
@@ -62,7 +75,7 @@ public class CounterApp {
         private int first;
         private int second;
 
-        public DoubleCouter(int first, int second) {
+        public DoubleCouter() {
             this.first = 0;
             this.second = 0;
         }
