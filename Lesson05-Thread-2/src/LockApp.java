@@ -1,5 +1,8 @@
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class LockApp {
 
@@ -13,6 +16,10 @@ public class LockApp {
                 try {
                     lock.lock();
                     //критическая секция
+
+                    if (!lock.tryLock(10, TimeUnit.SECONDS)) {
+                        System.out.println("Не удалось захватить блокировку");
+                    }
                 } catch (Exception e) {
 
                 }finally {
@@ -20,6 +27,13 @@ public class LockApp {
                 }
             }
         }).start();
+
+
+
+        ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+        readWriteLock.readLock();
     }
+
+
 
 }
