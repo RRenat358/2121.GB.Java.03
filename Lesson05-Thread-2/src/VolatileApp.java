@@ -1,7 +1,7 @@
 public class VolatileApp {
 
 
-    private static boolean isRunning = true;
+    private static volatile boolean isRunning = true;
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -10,7 +10,6 @@ public class VolatileApp {
                 System.out.println("Still alive");
                 try {
                     Thread.sleep(500);
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -21,6 +20,7 @@ public class VolatileApp {
 
         Thread.sleep(2000);
         isRunning = false;
+        //system-lock
         System.out.println("Stop while in thread");
 
     }
