@@ -8,12 +8,10 @@ public class DemoApp {
     public static void main(String[] args) {
         List<Integer> list = Collections.synchronizedList(new ArrayList<>());
 
-        Map <String, String> map = new ConcurrentHashMap<>();
-
+        Map<String, String> map = new ConcurrentHashMap<>();
 
 
     }
-
 
 
 }

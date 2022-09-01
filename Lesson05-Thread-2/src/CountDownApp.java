@@ -12,7 +12,7 @@ public class CountDownApp {
         for (int i = 0; i < 5; i++) {
             int w = i + 1;
 
-            new Thread(() ->{
+            new Thread(() -> {
                 try {
                     //task
                     Thread.sleep(random.nextInt(5) * 1000);

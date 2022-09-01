@@ -22,18 +22,16 @@ public class LockApp {
                     }
                 } catch (Exception e) {
 
-                }finally {
+                } finally {
                     lock.unlock();
                 }
             }
         }).start();
 
-
-
+        //v2
         ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
         readWriteLock.readLock();
     }
-
 
 
 }

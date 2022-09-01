@@ -8,7 +8,7 @@ public class SemaphoreApp {
 
         for (int i = 0; i < 10; i++) {
             final int w = i + 1;
-            new Thread(() ->{
+            new Thread(() -> {
                 try {
                     System.out.println("Поток " + w + " перед семофором...");
                     semaphore.acquire();
@@ -25,8 +25,6 @@ public class SemaphoreApp {
         }
 
     }
-
-
 
 
 }

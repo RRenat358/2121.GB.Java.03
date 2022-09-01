@@ -12,7 +12,7 @@ public class CyclicApp {
         for (int i = 0; i < 5; i++) {
             int w = i + 1;
 
-            new Thread(() ->{
+            new Thread(() -> {
                 try {
                     //task
 
@@ -33,7 +33,6 @@ public class CyclicApp {
             }).start();
         }
     }
-
 
 
 }
