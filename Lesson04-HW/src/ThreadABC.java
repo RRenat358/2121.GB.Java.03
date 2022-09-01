@@ -2,15 +2,30 @@
 
 public class ThreadABC {
 
-    private static final Object objSync = null;
+    private static final Object objSync = new Object();
+    private static String A = " A ";
+    private static String B = " B ";
+    private static String C = " C ";
+    private static String abc = "";
+
 
     public static void main(String[] args) {
 
         //======================================================================
         Thread threadA = new Thread(() -> {
             synchronized (objSync) {
-                System.out.println(" A ");
-
+                try {
+                    for (int i = 0; i < 5; i++) {
+                        if (abc != A) {
+                            System.out.print(A);
+                            abc = A;
+                        } else {
+                            objSync.wait();
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
         threadA.start();
@@ -19,7 +34,7 @@ public class ThreadABC {
         //======================================================================
         Thread threadB = new Thread(() -> {
             synchronized (objSync) {
-                System.out.println(" B ");
+                System.out.print(B);
 
             }
         });
@@ -29,7 +44,7 @@ public class ThreadABC {
         //======================================================================
         Thread threadC = new Thread(() -> {
             synchronized (objSync) {
-                System.out.println(" C ");
+                System.out.print(C);
 
             }
         });
