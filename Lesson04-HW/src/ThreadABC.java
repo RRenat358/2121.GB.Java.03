@@ -12,7 +12,7 @@ public class ThreadABC {
     public static void main(String[] args) {
 
         //======================================================================
-        Thread threadA = new Thread(() -> {
+/*        Thread threadA = new Thread(() -> {
             synchronized (objSync) {
                 try {
                     for (int i = 0; i < 5; i++) {
@@ -24,12 +24,34 @@ public class ThreadABC {
                             objSync.wait();
                         }
                     }
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        threadA.start();*/
+
+        Thread threadA = new Thread(() -> {
+            synchronized (objSync) {
+                try {
+                    for (int i = 0; i < 5; ) {
+                        if (abc == A) {
+                            objSync.wait();
+                        }
+                        if (abc == C || abc == "") {
+                            System.out.print(A);
+                            i++;
+                            abc = A;
+                            objSync.notifyAll();
+                        }
+                    }
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
         threadA.start();
+
 
 
         //======================================================================
@@ -40,6 +62,7 @@ public class ThreadABC {
             }
         });
         threadB.start();*/
+/*
         Thread threadB = new Thread(() -> {
             synchronized (objSync) {
                 try {
@@ -52,7 +75,29 @@ public class ThreadABC {
                             objSync.wait();
                         }
                     }
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        threadB.start();
+*/
+
+        Thread threadB = new Thread(() -> {
+            synchronized (objSync) {
+                try {
+                    for (int i = 0; i < 5; ) {
+                        if (abc == B) {
+                            objSync.wait();
+                        }
+                        if (abc == A) {
+                            System.out.print(B);
+                            i++;
+                            abc = B;
+                            objSync.notifyAll();
+                        }
+                    }
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -69,6 +114,7 @@ public class ThreadABC {
         });
         threadC.start();
 */
+/*
         Thread threadC = new Thread(() -> {
             synchronized (objSync) {
                 try {
@@ -81,12 +127,42 @@ public class ThreadABC {
                             objSync.wait();
                         }
                     }
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
         threadC.start();
+*/
+
+        Thread threadC = new Thread(() -> {
+            synchronized (objSync) {
+                try {
+                    for (int i = 0; i < 5; ) {
+                        if (abc == C) {
+                            objSync.wait();
+                        }
+                        if (abc == B) {
+                            System.out.print(C);
+                            i++;
+                            abc = C;
+                            objSync.notifyAll();
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        threadC.start();
+
+
+
+
+
+
+
+
 
     }
 
