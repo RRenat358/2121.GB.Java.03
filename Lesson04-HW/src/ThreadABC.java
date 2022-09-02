@@ -25,12 +25,10 @@ public class ThreadABC {
                         if (iA == 5) {
                             Thread.currentThread().interrupt();
                         }
-                        if (abcNext != A) {
-                            objSync.wait();
-                        }
+                        objSync.wait();
                     }
                 } catch (Exception e) {
-                    //Exception ignore
+                    //ignore
                     Thread.currentThread().interrupt();
                 }
             }
@@ -51,13 +49,10 @@ public class ThreadABC {
                         if (iB == 5) {
                             Thread.currentThread().interrupt();
                         }
-                        if (abcNext != B) {
-                            objSync.wait();
-                        }
-
+                        objSync.wait();
                     }
                 } catch (Exception e) {
-                    //Exception ignore
+                    //ignore
                     Thread.currentThread().interrupt();
                 }
             }
@@ -78,18 +73,15 @@ public class ThreadABC {
                         if (iC == 5) {
                             Thread.currentThread().interrupt();
                         }
-                        if (abcNext != C) {
-                            objSync.wait();
-                        }
+                        objSync.wait();
                     }
                 } catch (Exception e) {
-                    //Exception ignore
+                    //ignore
                     Thread.currentThread().interrupt();
                 }
             }
         });
         threadC.start();
-
 
 
     }
