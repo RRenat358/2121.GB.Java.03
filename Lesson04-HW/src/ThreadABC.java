@@ -6,124 +6,46 @@ public class ThreadABC {
     private static String A = " A ";
     private static String B = " B ";
     private static String C = " C ";
-    private volatile static String abc = "";
+    private volatile static String abcNext = "";
 
 
     public static void main(String[] args) {
 
         //======================================================================
-/*        Thread threadA = new Thread(() -> {
-            synchronized (objSync) {
-                try {
-                    for (int i = 0; i < 5; i++) {
-                        if (abc == "" || abc == C) {
-                            System.out.print(A);
-                            abc = A;
-                            objSync.notifyAll();
-                        } else {
-                            objSync.wait();
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        threadA.start();*/
-
         Thread threadA = new Thread(() -> {
             synchronized (objSync) {
                 try {
                     for (int iA = 0; iA < 5; ) {
-                        while (abc == A) {
-                            objSync.wait();
-                        }
-                        if (abc == C || abc == "") {
+                        if (abcNext == "" || abcNext == A ) {
                             System.out.print(A);
                             iA++;
-                            abc = A;
+                            abcNext = B;
                             objSync.notifyAll();
                         }
+//                        while (abcNext != A) {
+                            objSync.wait();
+//                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-//        threadA.start();
-
+        threadA.start();
 
 
         //======================================================================
-/*        Thread threadB = new Thread(() -> {
-            synchronized (objSync) {
-                System.out.print(B);
-
-            }
-        });
-        threadB.start();*/
-/*
-        Thread threadB = new Thread(() -> {
-            synchronized (objSync) {
-                try {
-                    for (int i = 0; i < 5; i++) {
-                        if (abc == A) {
-                            System.out.print(B);
-                            abc = B;
-                            objSync.notifyAll();
-                        } else {
-                            objSync.wait();
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        threadB.start();
-*/
-
         Thread threadB = new Thread(() -> {
             synchronized (objSync) {
                 try {
                     for (int iB = 0; iB < 5; ) {
-                        while (abc == B) {
-                            objSync.wait();
-                        }
-                        if (abc == A) {
+                        if (abcNext == B) {
                             System.out.print(B);
                             iB++;
-                            abc = B;
+                            abcNext = C;
                             objSync.notifyAll();
                         }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-//        threadB.start();
-
-        //======================================================================
-/*
-        Thread threadC = new Thread(() -> {
-            synchronized (objSync) {
-                System.out.print(C);
-
-            }
-        });
-        threadC.start();
-*/
-/*
-        Thread threadC = new Thread(() -> {
-            synchronized (objSync) {
-                try {
-                    for (int i = 0; i < 5; i++) {
-                        if (abc == B) {
-                            System.out.print(C);
-                            abc = C;
-                            objSync.notifyAll();
-                        } else {
+                        while (abcNext != B) {
                             objSync.wait();
                         }
                     }
@@ -132,20 +54,20 @@ public class ThreadABC {
                 }
             }
         });
-        threadC.start();
-*/
+        threadB.start();
 
+        //======================================================================
         Thread threadC = new Thread(() -> {
             synchronized (objSync) {
                 try {
                     for (int iC = 0; iC < 5; ) {
-                        while (abc == C) {
+                        while (abcNext != C) {
                             objSync.wait();
                         }
-                        if (abc == B) {
-                            System.out.print(C);
+                        if (abcNext == C) {
+                            System.out.println(C);
                             iC++;
-                            abc = C;
+                            abcNext = A;
                             objSync.notifyAll();
                         }
                     }
@@ -154,17 +76,16 @@ public class ThreadABC {
                 }
             }
         });
-//        threadC.start();
-
-
-
-
-        threadA.start();
-        threadB.start();
         threadC.start();
 
 
 
+
+/*
+        threadA.start();
+        threadB.start();
+        threadC.start();
+*/
 
 
     }
