@@ -21,17 +21,19 @@ public class ThreadABC {
                             iA++;
                             abcNext = B;
                             objSync.notifyAll();
+
                         }
 //                        while (abcNext != A) {
                             objSync.wait();
 //                        }
                     }
+                    Thread.currentThread().interrupt();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-        threadA.start();
+//        threadA.start();
 
 
         //======================================================================
@@ -45,48 +47,53 @@ public class ThreadABC {
                             abcNext = C;
                             objSync.notifyAll();
                         }
-                        while (abcNext != B) {
+//                        while (abcNext != B) {
                             objSync.wait();
-                        }
+//                        }
                     }
+                    Thread.currentThread().interrupt();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-        threadB.start();
+//        threadB.start();
 
         //======================================================================
         Thread threadC = new Thread(() -> {
             synchronized (objSync) {
                 try {
                     for (int iC = 0; iC < 5; ) {
-                        while (abcNext != C) {
-                            objSync.wait();
-                        }
                         if (abcNext == C) {
                             System.out.println(C);
                             iC++;
                             abcNext = A;
                             objSync.notifyAll();
                         }
+//                        while (abcNext != C) {
+                            objSync.wait();
+//                        }
                     }
+                    Thread.currentThread().interrupt();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-        threadC.start();
+//        threadC.start();
 
 
 
 
-/*
         threadA.start();
         threadB.start();
         threadC.start();
-*/
 
+/*
+        threadA.interrupt();
+        threadB.interrupt();
+        threadC.interrupt();
+*/
 
     }
 
