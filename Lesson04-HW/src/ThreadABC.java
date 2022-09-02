@@ -16,25 +16,26 @@ public class ThreadABC {
             synchronized (objSync) {
                 try {
                     for (int iA = 0; iA < 5; ) {
-                        if (abcNext == "" || abcNext == A ) {
+                        if (abcNext == A || abcNext == "") {
                             System.out.print(A);
                             iA++;
                             abcNext = B;
                             objSync.notifyAll();
-
                         }
-//                        while (abcNext != A) {
+                        if (iA == 5) {
+                            Thread.currentThread().interrupt();
+                        }
+                        if (abcNext != A) {
                             objSync.wait();
-//                        }
+                        }
                     }
-                    Thread.currentThread().interrupt();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //Exception ignore
+                    Thread.currentThread().interrupt();
                 }
             }
         });
-//        threadA.start();
-
+        threadA.start();
 
         //======================================================================
         Thread threadB = new Thread(() -> {
@@ -47,17 +48,21 @@ public class ThreadABC {
                             abcNext = C;
                             objSync.notifyAll();
                         }
-//                        while (abcNext != B) {
+                        if (iB == 5) {
+                            Thread.currentThread().interrupt();
+                        }
+                        if (abcNext != B) {
                             objSync.wait();
-//                        }
+                        }
+
                     }
-                    Thread.currentThread().interrupt();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //Exception ignore
+                    Thread.currentThread().interrupt();
                 }
             }
         });
-//        threadB.start();
+        threadB.start();
 
         //======================================================================
         Thread threadC = new Thread(() -> {
@@ -70,30 +75,22 @@ public class ThreadABC {
                             abcNext = A;
                             objSync.notifyAll();
                         }
-//                        while (abcNext != C) {
+                        if (iC == 5) {
+                            Thread.currentThread().interrupt();
+                        }
+                        if (abcNext != C) {
                             objSync.wait();
-//                        }
+                        }
                     }
-                    Thread.currentThread().interrupt();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //Exception ignore
+                    Thread.currentThread().interrupt();
                 }
             }
         });
-//        threadC.start();
-
-
-
-
-        threadA.start();
-        threadB.start();
         threadC.start();
 
-/*
-        threadA.interrupt();
-        threadB.interrupt();
-        threadC.interrupt();
-*/
+
 
     }
 
