@@ -1,3 +1,4 @@
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -19,6 +20,7 @@ public class ThreadABC_v2 {
 //            synchronized (objSync) {
                 try {
                     lock.lock();
+
                     for (int iA = 0; iA < 5; ) {
                         if (abcNext == A || abcNext == "") {
                             System.out.print(A);
