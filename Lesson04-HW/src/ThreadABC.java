@@ -34,13 +34,13 @@ public class ThreadABC {
         Thread threadA = new Thread(() -> {
             synchronized (objSync) {
                 try {
-                    for (int i = 0; i < 5; ) {
-                        if (abc == A) {
+                    for (int iA = 0; iA < 5; ) {
+                        while (abc == A) {
                             objSync.wait();
                         }
                         if (abc == C || abc == "") {
                             System.out.print(A);
-                            i++;
+                            iA++;
                             abc = A;
                             objSync.notifyAll();
                         }
@@ -50,7 +50,7 @@ public class ThreadABC {
                 }
             }
         });
-        threadA.start();
+//        threadA.start();
 
 
 
@@ -86,13 +86,13 @@ public class ThreadABC {
         Thread threadB = new Thread(() -> {
             synchronized (objSync) {
                 try {
-                    for (int i = 0; i < 5; ) {
-                        if (abc == B) {
+                    for (int iB = 0; iB < 5; ) {
+                        while (abc == B) {
                             objSync.wait();
                         }
                         if (abc == A) {
                             System.out.print(B);
-                            i++;
+                            iB++;
                             abc = B;
                             objSync.notifyAll();
                         }
@@ -102,7 +102,7 @@ public class ThreadABC {
                 }
             }
         });
-        threadB.start();
+//        threadB.start();
 
         //======================================================================
 /*
@@ -138,13 +138,13 @@ public class ThreadABC {
         Thread threadC = new Thread(() -> {
             synchronized (objSync) {
                 try {
-                    for (int i = 0; i < 5; ) {
-                        if (abc == C) {
+                    for (int iC = 0; iC < 5; ) {
+                        while (abc == C) {
                             objSync.wait();
                         }
                         if (abc == B) {
                             System.out.print(C);
-                            i++;
+                            iC++;
                             abc = C;
                             objSync.notifyAll();
                         }
@@ -154,11 +154,14 @@ public class ThreadABC {
                 }
             }
         });
+//        threadC.start();
+
+
+
+
+        threadA.start();
+        threadB.start();
         threadC.start();
-
-
-
-
 
 
 
