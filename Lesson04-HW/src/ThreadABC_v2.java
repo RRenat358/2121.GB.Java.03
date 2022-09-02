@@ -25,11 +25,13 @@ public class ThreadABC_v2 {
                             iA++;
                             abcNext = B;
 //                            objSync.notifyAll();
+                            lock.unlock();
                         }
                         if (iA == 5) {
                             Thread.currentThread().interrupt();
                         }
 //                        objSync.wait();
+//                        lock.lock();
                     }
                 } catch (Exception e) {
                     //ignore
@@ -52,11 +54,13 @@ public class ThreadABC_v2 {
                             iB++;
                             abcNext = C;
 //                            objSync.notifyAll();
+                            lock.unlock();
                         }
                         if (iB == 5) {
                             Thread.currentThread().interrupt();
                         }
 //                        objSync.wait();
+//                        lock.lock();
                     }
                 } catch (Exception e) {
                     //ignore
@@ -79,11 +83,13 @@ public class ThreadABC_v2 {
                             iC++;
                             abcNext = A;
 //                            objSync.notifyAll();
+                            lock.unlock();
                         }
                         if (iC == 5) {
                             Thread.currentThread().interrupt();
                         }
 //                        objSync.wait();
+//                        lock.lock();
                     }
                 } catch (Exception e) {
                     //ignore
