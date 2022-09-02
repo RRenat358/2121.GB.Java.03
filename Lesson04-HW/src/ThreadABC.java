@@ -1,4 +1,10 @@
 
+/**
+ * Создать три потока,
+ * каждый из которых выводит определенную букву (A, B и C) 5 раз
+ * (порядок – ABСABСABС, т.е. каждый поток по очереди).
+ * Используйте wait/notify/notifyAll.
+ */
 
 public class ThreadABC {
 
@@ -11,7 +17,7 @@ public class ThreadABC {
 
     public static void main(String[] args) {
 
-        //======================================================================
+
         Thread threadA = new Thread(() -> {
             synchronized (objSync) {
                 try {
@@ -35,7 +41,7 @@ public class ThreadABC {
         });
         threadA.start();
 
-        //======================================================================
+
         Thread threadB = new Thread(() -> {
             synchronized (objSync) {
                 try {
@@ -59,7 +65,7 @@ public class ThreadABC {
         });
         threadB.start();
 
-        //======================================================================
+
         Thread threadC = new Thread(() -> {
             synchronized (objSync) {
                 try {
