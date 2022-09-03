@@ -3,6 +3,15 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Реализация блокировки и ожиданий с помощью
+ * Lock lock = new ReentrantLock();
+ * Condition condition = lock.newCondition();
+ *
+ * Для примера оставлена и закоменнтирована реализация
+ * synchronized (objSync){}
+ */
+
 public class ThreadABC_v2 {
 
 
