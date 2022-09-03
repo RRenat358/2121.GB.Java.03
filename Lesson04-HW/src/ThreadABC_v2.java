@@ -1,19 +1,22 @@
-import java.util.concurrent.TimeUnit;
+
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ThreadABC_v2 {
 
 
-    private static final Object objSync = new Object();
     private static String A = " A ";
     private static String B = " B ";
     private static String C = " C ";
     private volatile static String abcNext = "";
 
+//    private static final Object objSync = new Object();
+
 
     public static void main(String[] args) {
         Lock lock = new ReentrantLock();
+        Condition condition = lock.newCondition();
 
 
         Thread threadA = new Thread(() -> {
@@ -26,13 +29,13 @@ public class ThreadABC_v2 {
                         iA++;
                         abcNext = B;
 //                            objSync.notifyAll();
-                        lock.unlock();
+                        condition.signalAll();
                     }
                     if (iA == 5) {
                         Thread.currentThread().interrupt();
                     }
 //                        objSync.wait();
-//                        lock.lock();
+                    condition.await();
                 }
             } catch (Exception e) {
                 //ignore
@@ -55,13 +58,13 @@ public class ThreadABC_v2 {
                         iB++;
                         abcNext = C;
 //                            objSync.notifyAll();
-                        lock.unlock();
+                        condition.signalAll();
                     }
                     if (iB == 5) {
                         Thread.currentThread().interrupt();
                     }
 //                        objSync.wait();
-//                        lock.lock();
+                    condition.await();
                 }
             } catch (Exception e) {
                 //ignore
@@ -84,13 +87,13 @@ public class ThreadABC_v2 {
                         iC++;
                         abcNext = A;
 //                            objSync.notifyAll();
-                        lock.unlock();
+                        condition.signalAll();
                     }
                     if (iC == 5) {
                         Thread.currentThread().interrupt();
                     }
 //                        objSync.wait();
-//                        lock.lock();
+                    condition.await();
                 }
             } catch (Exception e) {
                 //ignore
