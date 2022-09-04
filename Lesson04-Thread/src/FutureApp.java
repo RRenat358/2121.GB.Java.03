@@ -21,7 +21,7 @@ public class FutureApp {
                 for (int i = 0; i < res1.length; i++) {
                     res0 += res1[i];
                 }
-                Thread.sleep(3000);
+                Thread.sleep(1000);
                 return res0;
             }
         };
