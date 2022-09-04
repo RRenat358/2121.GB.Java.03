@@ -1,3 +1,6 @@
+
+
+
 public class Car implements Runnable {
     private static int CARS_COUNT;
     static {
