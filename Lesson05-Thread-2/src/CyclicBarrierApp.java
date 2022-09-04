@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.concurrent.CyclicBarrier;
 
-public class CyclicApp {
+public class CyclicBarrierApp {
 
     private static Random random = new Random();
 
@@ -16,14 +16,14 @@ public class CyclicApp {
                 try {
                     //task
 
-                    System.out.println("Поток " + w + " готовится...");
+                    System.out.println("Поток " + w + " готовится [X]");
                     Thread.sleep(random.nextInt(5) * 1000);
-                    System.out.println("Поток " + w + " готов");
+                    System.out.println("Поток " + w + " готов !");
                     cyclicBarrier.await();
 
-                    System.out.println("Поток " + w + " поехал...");
+                    System.out.println("Поток " + w + " поехал -->>");
                     Thread.sleep(random.nextInt(5) * 1000);
-                    System.out.println("Поток " + w + " доехал");
+                    System.out.println("Поток " + w + "--> доехал");
                     cyclicBarrier.await();
 
                 } catch (Exception e) {
