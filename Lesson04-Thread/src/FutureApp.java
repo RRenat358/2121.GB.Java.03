@@ -33,7 +33,7 @@ public class FutureApp {
                 for (int i = 0; i < res2.length; i++) {
                     res0 += res2[i];
                 }
-                Thread.sleep(3000);
+                Thread.sleep(1000);
                 return res0;
             }
         };
@@ -65,7 +65,7 @@ public class FutureApp {
 
         System.out.println("future1 = " + future1.get());
         System.out.println("future2 = " + future2.get());
-        System.out.println("Sum f1 + f2 = " + future1.get() + future2.get());
+        System.out.println("Sum f1 + f2 = " + (future1.get() + future2.get()));
 
         executorService.shutdown();
 
