@@ -30,7 +30,7 @@ public class CyclicBarrierApp_2 {
     }
 
 
-    private static class Task implements Runnable{
+    private static class Task implements Runnable {
 
         private CyclicBarrier cyclicBarrier2;
 
@@ -51,8 +51,6 @@ public class CyclicBarrierApp_2 {
         }
 
     }
-
-
 
 
 }

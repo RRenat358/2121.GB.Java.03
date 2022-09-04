@@ -6,14 +6,14 @@ public class AtomicIntegerApp {
         AtomicInteger atomicInteger = new AtomicInteger();
 
 
-        new Thread(()->{
+        new Thread(() -> {
             atomicInteger.incrementAndGet();
             if (atomicInteger.get() == 1) {
                 System.out.println("1 thread win");
             }
         }).start();
 
-        new Thread(()->{
+        new Thread(() -> {
             atomicInteger.incrementAndGet();
             if (atomicInteger.get() == 1) {
                 System.out.println("2 thread win");

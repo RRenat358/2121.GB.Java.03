@@ -7,7 +7,7 @@ public class ExecutorApp_2 {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ExecutorService poolThread = Executors.newFixedThreadPool(4, new ThreadFactory(){
+        ExecutorService poolThread = Executors.newFixedThreadPool(4, new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
                 System.out.println("=== New Thread ===");
@@ -57,7 +57,6 @@ public class ExecutorApp_2 {
 
 //        poolThread.shutdown();
         poolThread.shutdownNow();
-
 
 
     }

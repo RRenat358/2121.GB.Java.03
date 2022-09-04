@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class OtherMetodApp {
+public class OtherMethodApp {
     public static void main(String[] args) {
 
         //Устаревший немного метод, т.к. медленно синхронизтолван
@@ -14,12 +14,13 @@ public class OtherMetodApp {
         CopyOnWriteArrayList<String> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
 
 
-        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
-
+        ConcurrentHashMap<String, String> map1 = new ConcurrentHashMap<>();
+        Map<String, String> map2 = new ConcurrentHashMap<>();
 
         //одним патоком блокируется только один бакет,
         //другому патоку, можно работать с другим бакетом
-        Map<String, String> map2 = Collections.synchronizedMap(new HashMap<>());
+        Map<String, String> map3 = Collections.synchronizedMap(new HashMap<>());
+        List<Integer> list = Collections.synchronizedList(new ArrayList<>());
 
 
 

@@ -26,11 +26,7 @@ public class CountDownLatchApp_2 {
         countDownLatch.await();
 
 
-
-
-
     }
-
 
 
 }
