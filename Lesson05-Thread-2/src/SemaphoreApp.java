@@ -11,7 +11,7 @@ public class SemaphoreApp {
             new Thread(() -> {
                 try {
                     System.out.println("Поток " + w + " перед семофором [X]");
-                    System.out.println(semaphore.getQueueLength());
+                    System.out.println("Очередь " + semaphore.getQueueLength());
                     semaphore.acquire();
                     System.out.println("Поток " + w + " получил доступ к ресурсу -->> ");
                     Thread.sleep(1000);
