@@ -25,6 +25,7 @@ public class FutureApp {
                 return res0;
             }
         };
+
         Callable<Integer> callable2 = new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
@@ -44,26 +45,27 @@ public class FutureApp {
             while (!future1.isDone()) {
                 System.out.println("Future 1 still working");
                 try {
-                    Thread.sleep(400);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }).start();
-        new Thread(() -> {
-            while (!future2.isDone()) {
-                System.out.println("Future 2 still working");
-                try {
-                    Thread.sleep(400);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
         }).start();
 
-        System.out.println(future1.get());
-        System.out.println(future2.get());
-        System.out.println(future1.get() + future2.get());
+        new Thread(() -> {
+            while (!future2.isDone()) {
+                System.out.println("Future 2 still working");
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
+
+        System.out.println("future1 = " + future1.get());
+        System.out.println("future2 = " + future2.get());
+        System.out.println("Sum f1 + f2 = " + future1.get() + future2.get());
 
         executorService.shutdown();
 
