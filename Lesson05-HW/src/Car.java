@@ -33,6 +33,14 @@ public class Car implements Runnable {
         this.speed = speed;
         CARS_COUNT++;
         this.name = "Машина # " + CARS_COUNT;
+        System.out.println(this.name + " готовится");
+
+        try {
+            Thread.sleep(500 + (int) (Math.random() * 800));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 //    CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
@@ -54,11 +62,10 @@ public class Car implements Runnable {
 
     @Override
     public void run() {
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
-        try {
-            System.out.println(this.name + " готовится");
-            Thread.sleep(500 + (int) (Math.random() * 800));
-            System.out.println(this.name + " готов");
+//        System.out.println(this.name + " готов");
+        for (int i = 0; i < race.getStages().size(); i++) {
+            race.getStages().get(i).go(this);
+        }
 
 /*
             try {
@@ -71,10 +78,6 @@ public class Car implements Runnable {
             }
 */
 
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
 
 
@@ -97,86 +100,8 @@ public class Car implements Runnable {
 */
 
 
-        for (int i = 0; i < race.getStages().size(); i++) {
-            int finalI = i;
-            race.getStages().get(finalI).go(this);
-
-
-
-/*
-            executorService.execute(()->{
-                if (finalI == 0) {
-                    try {
-                        cyclicBarrier.await();
-                        race.getStages().get(finalI).go(this);
-//                        cyclicBarrier.await();
-                    } catch (InterruptedException | BrokenBarrierException e) {
-                        e.printStackTrace();
-                    }
-                }
-*/
-
-
-
-/*
-                if (finalI == 2) {
-                    try {
-                        race.getStages().get(finalI).go(this);
-                        cyclicBarrier.await();
-                    } catch (InterruptedException | BrokenBarrierException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (finalI == 3) {
-                    try {
-                        race.getStages().get(finalI).go(this);
-                        cyclicBarrier.await();
-                    } catch (InterruptedException | BrokenBarrierException e) {
-                        e.printStackTrace();
-                    }
-                }
-*/
-
-
-
-
-/*
-            if (finalI > 3){
-                race.getStages().get(finalI).go(this);
-            }
-*/
-
-
-
-//            });
-
-
-
-//            race.getStages().get(finalI).go(this);
-//            if (finalI > 0){
-//                race.getStages().get(finalI).go(this);
-//            }
-
-
-
-
-        }
-
-
-/*
-        try {
-            cyclicBarrier.await();
-        } catch (InterruptedException | BrokenBarrierException e) {
-            e.printStackTrace();
-        }
-*/
-
-
-
 
     }
-
-
 
 
 }
