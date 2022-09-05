@@ -22,6 +22,19 @@ public class MainClass {
 
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
+
+/*
+            int finalI = i;
+            executorService.execute(() -> {
+                try {
+                    cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
+                    cyclicBarrier.await();
+                } catch (InterruptedException | BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            });
+*/
+
         }
 
         for (int i = 0; i < cars.length; i++) {
@@ -32,7 +45,7 @@ public class MainClass {
                     cars[finalI].run();
                     cyclicBarrier.await();
                 } catch (InterruptedException | BrokenBarrierException e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
             });
 
