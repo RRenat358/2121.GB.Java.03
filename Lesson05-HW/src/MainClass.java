@@ -18,7 +18,7 @@ public class MainClass {
 
         Car[] cars = new Car[CARS_COUNT];
 
-        Race race = new Race(new Road(60), new Tunnel(), new Road(40));
+        Race race = new Race(new Road(60), new Tunnel(80, 1), new Road(40));
 
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
@@ -36,13 +36,18 @@ public class MainClass {
             });
 */
 
+
         }
 
+
+        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
+
         for (int i = 0; i < cars.length; i++) {
-//            new Thread(cars[i]).start();
+            new Thread(cars[i]).start();
 
             int finalI = i;
 
+/*
             executorService.execute(() -> {
                 try {
                     cars[finalI].run();
@@ -51,11 +56,12 @@ public class MainClass {
                     e.printStackTrace();
                 }
             });
+*/
 
 
         }
 
-        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
+
 
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
     }

@@ -18,6 +18,8 @@ public class Car implements Runnable {
     private int speed;
     private String name;
 
+//    private MainClass mainClass;
+
     public String getName() {
         return name;
     }
@@ -30,10 +32,10 @@ public class Car implements Runnable {
         this.race = race;
         this.speed = speed;
         CARS_COUNT++;
-        this.name = "Машина # 00" + CARS_COUNT;
+        this.name = "Машина # " + CARS_COUNT;
     }
 
-//    CyclicBarrier cyclicBarrier = new CyclicBarrier(4);//todo
+//    CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
 /*
     @Override
     public void run() {
@@ -58,11 +60,16 @@ public class Car implements Runnable {
             Thread.sleep(500 + (int) (Math.random() * 800));
             System.out.println(this.name + " готов");
 
+/*
             try {
+                System.out.println(cyclicBarrier.getNumberWaiting());
+                System.out.println(cyclicBarrier.getParties());
+
                 cyclicBarrier.await();
             } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
+*/
 
 
         } catch (Exception e) {
@@ -79,24 +86,38 @@ public class Car implements Runnable {
         }
 */
 
+/*
+        executorService.execute(()-> {
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+        });
+*/
+
 
         for (int i = 0; i < race.getStages().size(); i++) {
             int finalI = i;
             race.getStages().get(finalI).go(this);
 
 
+
 /*
             executorService.execute(()->{
                 if (finalI == 0) {
                     try {
-                        race.getStages().get(finalI).go(this);
                         cyclicBarrier.await();
+                        race.getStages().get(finalI).go(this);
+//                        cyclicBarrier.await();
                     } catch (InterruptedException | BrokenBarrierException e) {
                         e.printStackTrace();
                     }
                 }
-
 */
+
+
+
 /*
                 if (finalI == 2) {
                     try {
@@ -114,15 +135,21 @@ public class Car implements Runnable {
                         e.printStackTrace();
                     }
                 }
-*//*
+*/
 
-            if (finalI > 0){
+
+
+
+/*
+            if (finalI > 3){
                 race.getStages().get(finalI).go(this);
             }
-
-
-            });
 */
+
+
+
+//            });
+
 
 
 //            race.getStages().get(finalI).go(this);
