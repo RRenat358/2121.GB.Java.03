@@ -23,6 +23,7 @@ public class MainClass {
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
 
+
 /*
             int finalI = i;
             executorService.execute(() -> {
@@ -38,10 +39,10 @@ public class MainClass {
         }
 
         for (int i = 0; i < cars.length; i++) {
-            new Thread(cars[i]).start();
+//            new Thread(cars[i]).start();
 
-/*
             int finalI = i;
+
             executorService.execute(() -> {
                 try {
                     cars[finalI].run();
@@ -50,7 +51,6 @@ public class MainClass {
                     e.printStackTrace();
                 }
             });
-*/
 
 
         }

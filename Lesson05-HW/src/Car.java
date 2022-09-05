@@ -57,9 +57,18 @@ public class Car implements Runnable {
             System.out.println(this.name + " готовится");
             Thread.sleep(500 + (int) (Math.random() * 800));
             System.out.println(this.name + " готов");
+
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
 
 /*
@@ -70,22 +79,53 @@ public class Car implements Runnable {
         }
 */
 
-        for (int i = 0; i < race.getStages().size(); i++) {
 
+        for (int i = 0; i < race.getStages().size(); i++) {
             int finalI = i;
+            race.getStages().get(finalI).go(this);
+
+
+/*
             executorService.execute(()->{
                 if (finalI == 0) {
                     try {
-
+                        race.getStages().get(finalI).go(this);
                         cyclicBarrier.await();
-//                        race.getStages().get(finalI).go(this);
-//                    continue;
                     } catch (InterruptedException | BrokenBarrierException e) {
                         e.printStackTrace();
                     }
                 }
+
+*/
+/*
+                if (finalI == 2) {
+                    try {
+                        race.getStages().get(finalI).go(this);
+                        cyclicBarrier.await();
+                    } catch (InterruptedException | BrokenBarrierException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (finalI == 3) {
+                    try {
+                        race.getStages().get(finalI).go(this);
+                        cyclicBarrier.await();
+                    } catch (InterruptedException | BrokenBarrierException e) {
+                        e.printStackTrace();
+                    }
+                }
+*//*
+
+            if (finalI > 0){
+                race.getStages().get(finalI).go(this);
+            }
+
+
             });
-            race.getStages().get(finalI).go(this);
+*/
+
+
+//            race.getStages().get(finalI).go(this);
 //            if (finalI > 0){
 //                race.getStages().get(finalI).go(this);
 //            }
