@@ -23,13 +23,13 @@
 
     </dependencies>
 
-    <build>
-        <sourceDirectory>../2121.GB.Java.03</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>../src</directory>
-            </resource>
-        </resources>
-    </build>
+<!--    <build>-->
+<!--        <sourceDirectory>../2121.GB.Java.03</sourceDirectory>-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>../src</directory>-->
+<!--            </resource>-->
+<!--        </resources>-->
+<!--    </build>-->
     
 </project>
