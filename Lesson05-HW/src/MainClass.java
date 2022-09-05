@@ -11,12 +11,12 @@ public class MainClass {
 
     public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
 
-        ExecutorService executorService = Executors.newCachedThreadPool();
+//        ExecutorService executorService = Executors.newCachedThreadPool();
+        ExecutorService executorService = Executors.newFixedThreadPool(CARS_COUNT);
         CyclicBarrier cyclicBarrier = new CyclicBarrier(CARS_COUNT);
         CountDownLatch countDownLatch = new CountDownLatch(CARS_COUNT);
 
         List<String> listWin = Collections.synchronizedList(new ArrayList<>());
-
 
 
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
@@ -30,12 +30,11 @@ public class MainClass {
 
             int finalI = i;
 
-
             executorService.execute(() -> {
                 try {
                     cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
                     cyclicBarrier.await();
-//                        countDownLatch.countDown();
+//                    countDownLatch.countDown();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -43,6 +42,7 @@ public class MainClass {
         }
         cyclicBarrier.await();
 //        countDownLatch.await();
+
 
 
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
@@ -56,7 +56,9 @@ public class MainClass {
                 try {
                     cars[finalI].run();
                     cyclicBarrier.await();
-//                    listWin.add(cars[finalI].getName());
+//                    countDownLatch.countDown();
+
+                    listWin.add(cars[finalI].getName());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -65,9 +67,11 @@ public class MainClass {
         }
 
         cyclicBarrier.await();
+//        countDownLatch.countDown();
 
 
         System.out.println(listWin.get(0) + " > WIN < ");
+//        cyclicBarrier.await();
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
 
     }
