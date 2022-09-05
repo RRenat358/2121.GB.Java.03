@@ -33,7 +33,7 @@ public class Car implements Runnable {
         this.name = "Машина # 00" + CARS_COUNT;
     }
 
-    CyclicBarrier cyclicBarrier = new CyclicBarrier(4);//todo
+//    CyclicBarrier cyclicBarrier = new CyclicBarrier(4);//todo
 /*
     @Override
     public void run() {
@@ -52,6 +52,7 @@ public class Car implements Runnable {
 
     @Override
     public void run() {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
         try {
             System.out.println(this.name + " готовится");
             Thread.sleep(500 + (int) (Math.random() * 800));
@@ -70,7 +71,28 @@ public class Car implements Runnable {
 */
 
         for (int i = 0; i < race.getStages().size(); i++) {
-            race.getStages().get(i).go(this);
+
+            int finalI = i;
+            executorService.execute(()->{
+                if (finalI == 0) {
+                    try {
+
+                        cyclicBarrier.await();
+//                        race.getStages().get(finalI).go(this);
+//                    continue;
+                    } catch (InterruptedException | BrokenBarrierException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            race.getStages().get(finalI).go(this);
+//            if (finalI > 0){
+//                race.getStages().get(finalI).go(this);
+//            }
+
+
+
+
         }
 
 

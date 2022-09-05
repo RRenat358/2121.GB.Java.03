@@ -38,7 +38,9 @@ public class MainClass {
         }
 
         for (int i = 0; i < cars.length; i++) {
-//            new Thread(cars[i]).start();
+            new Thread(cars[i]).start();
+
+/*
             int finalI = i;
             executorService.execute(() -> {
                 try {
@@ -48,6 +50,7 @@ public class MainClass {
                     e.printStackTrace();
                 }
             });
+*/
 
 
         }
