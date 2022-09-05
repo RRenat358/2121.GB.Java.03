@@ -2,7 +2,10 @@
 
 
 public class MainClass {
+
     public static final int CARS_COUNT = 4;
+
+    
 
     public static void main(String[] args) {
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
@@ -19,4 +22,5 @@ public class MainClass {
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
     }
+
 }
