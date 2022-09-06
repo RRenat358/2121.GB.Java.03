@@ -12,24 +12,39 @@ public class MainClass {
     public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
 
 //        ExecutorService executorService = Executors.newCachedThreadPool();
-        ExecutorService executorService = Executors.newFixedThreadPool(CARS_COUNT);
+//        ExecutorService executorService = Executors.newFixedThreadPool(CARS_COUNT);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
         CyclicBarrier cyclicBarrier = new CyclicBarrier(CARS_COUNT);
         CountDownLatch countDownLatch = new CountDownLatch(CARS_COUNT);
 
         List<String> listWin = Collections.synchronizedList(new ArrayList<>());
 
-
-        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
-
         Car[] cars = new Car[CARS_COUNT];
 
         Race race = new Race(new Road(60), new Tunnel(80, 2), new Road(40));
+
+
+        //==================================================
+        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
+
 
         for (int i = 0; i < cars.length; i++) {
 //            cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
 
             int finalI = i;
+//            Integer finalI = i;
 
+            new Thread(() -> {
+                try {
+                    cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
+//                    cyclicBarrier.await();
+                    countDownLatch.countDown();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+/*
             executorService.execute(() -> {
                 try {
                     cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
@@ -39,35 +54,60 @@ public class MainClass {
                     e.printStackTrace();
                 }
             });
+*/
+
+
+
         }
-        cyclicBarrier.await();
-//        countDownLatch.await();
+//        cyclicBarrier.await();
+        countDownLatch.await();
 
 
 
+        //==================================================
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
 
-        for (int i = 0; i < cars.length; i++) {
+        for (int i2 = 0; i2 < cars.length; i2++) {
 //            new Thread(cars[i]).start();
 
-            int finalI = i;
+            int finalI2 = i2;
+//            Integer finalI2 = i;
 
+
+
+
+            new Thread(() -> {
+                try {
+                    cars[finalI2].run();
+//                    cyclicBarrier.await();
+                    countDownLatch.countDown();
+
+                    listWin.add(cars[finalI2].getName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+
+
+/*
             executorService.execute(() -> {
                 try {
-                    cars[finalI].run();
+                    cars[finalI2].run();
                     cyclicBarrier.await();
 //                    countDownLatch.countDown();
 
-                    listWin.add(cars[finalI].getName());
+                    listWin.add(cars[finalI2].getName());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
+*/
 
         }
 
-        cyclicBarrier.await();
-//        countDownLatch.countDown();
+//        cyclicBarrier.await();
+        countDownLatch.await();
 
 
         System.out.println(listWin.get(0) + " > WIN < ");
