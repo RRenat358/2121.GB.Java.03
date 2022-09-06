@@ -15,6 +15,7 @@ public class MainClass {
 //        ExecutorService executorService = Executors.newFixedThreadPool(CARS_COUNT);
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         CyclicBarrier cyclicBarrier = new CyclicBarrier(CARS_COUNT);
+        CyclicBarrier cyclicBarrier2 = new CyclicBarrier(CARS_COUNT);
         CountDownLatch countDownLatch = new CountDownLatch(CARS_COUNT);
         CountDownLatch countDownLatch2 = new CountDownLatch(CARS_COUNT);
 
@@ -74,41 +75,50 @@ public class MainClass {
 //            int finalI2 = i2;
             Integer finalI2 = i2;
 
+/*
             new Thread(() -> {
                 try {
                     cars[finalI2].run();
-//                    cyclicBarrier.await();
+                    listWin.add(cars[finalI2].getName());
+
+//                    cyclicBarrier2.await();
                     countDownLatch2.countDown();
 
-                    listWin.add(cars[finalI2].getName());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }).start();
+*/
 
-
-
-/*
             executorService.execute(() -> {
                 try {
                     cars[finalI2].run();
-                    cyclicBarrier.await();
-//                    countDownLatch.countDown();
-
                     listWin.add(cars[finalI2].getName());
+
+//                    cyclicBarrier2.await();
+                    countDownLatch2.countDown();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
-*/
 
         }
 
-//        cyclicBarrier.await();
+//        cyclicBarrier2.await();
         countDownLatch2.await();
 
 
-        System.out.println(listWin.get(0) + " > WIN < ");
+        executorService.shutdown();
+
+/*
+        while (Thread.activeCount() > 2) {
+            System.out.println("---");
+            Thread.sleep(500);
+        }
+*/
+
+        System.out.println(listWin.get(0) + " >> WIN << ");
 //        cyclicBarrier.await();
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
 
