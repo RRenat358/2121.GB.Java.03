@@ -11,42 +11,28 @@ public class MainClass {
 
     public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
 
-//        ExecutorService executorService = Executors.newCachedThreadPool();
-//        ExecutorService executorService = Executors.newFixedThreadPool(CARS_COUNT);
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(CARS_COUNT);
-        CyclicBarrier cyclicBarrier2 = new CyclicBarrier(CARS_COUNT);
+        ExecutorService executorService = Executors.newCachedThreadPool();
+
+//        CyclicBarrier cyclicBarrier = new CyclicBarrier(CARS_COUNT);
+//        CyclicBarrier cyclicBarrier2 = new CyclicBarrier(CARS_COUNT);
         CountDownLatch countDownLatch = new CountDownLatch(CARS_COUNT);
         CountDownLatch countDownLatch2 = new CountDownLatch(CARS_COUNT);
 
-        List<String> listWin = Collections.synchronizedList(new ArrayList<>());
+        List<String> finishList = Collections.synchronizedList(new ArrayList<>());
 
         Car[] cars = new Car[CARS_COUNT];
 
-        Race race = new Race(new Road(60), new Tunnel(80, 2), new Road(40));
-
+        Race race = new Race(
+                new Road(60),
+                new Tunnel(80, Math.round(CARS_COUNT/2)),
+                new Road(40)
+        );
 
         //==================================================
-        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
-
+        System.out.println("\nВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!! \n");
 
         for (int i = 0; i < cars.length; i++) {
-//            cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
-
-//            int finalI = i;
-            Integer finalI = i;
-/*
-            new Thread(() -> {
-                try {
-                    cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
-//                    cyclicBarrier.await();
-                    countDownLatch.countDown();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
-*/
-
+            int finalI = i;
             executorService.execute(() -> {
                 try {
                     cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
@@ -56,70 +42,37 @@ public class MainClass {
                     e.printStackTrace();
                 }
             });
-
         }
 //        cyclicBarrier.await();
         countDownLatch.await();
 
-
-
         //==================================================
-        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
+        System.out.println("\nВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!! \n");
 
-        for (int i2 = 0; i2 < cars.length; i2++) {
-//            new Thread(cars[i]).start();
-
-//            int finalI2 = i2;
-            Integer finalI2 = i2;
-
-/*
-            new Thread(() -> {
-                try {
-                    cars[finalI2].run();
-                    listWin.add(cars[finalI2].getName());
-
-//                    cyclicBarrier2.await();
-                    countDownLatch2.countDown();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
-*/
-
+        for (int i = 0; i < cars.length; i++) {
+            int finalI = i;
             executorService.execute(() -> {
                 try {
-                    cars[finalI2].run();
-                    listWin.add(cars[finalI2].getName());
-
-//                    cyclicBarrier2.await();
+                    cars[finalI].run();
+                    finishList.add(cars[finalI].getName());
+//                    cyclicBarrier.await();
                     countDownLatch2.countDown();
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
-
         }
-
-//        cyclicBarrier2.await();
+//        cyclicBarrier.await();
         countDownLatch2.await();
 
-
+        //==================================================
+        // Финиш
         executorService.shutdown();
 
-/*
-        while (Thread.activeCount() > 2) {
-            System.out.println("---");
-            Thread.sleep(500);
-        }
-*/
+        System.out.printf("\n%s  -> WIN <-  \n", finishList.get(0));
 
-        System.out.println(listWin.get(0) + " >> WIN << ");
-//        cyclicBarrier.await();
-        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
+        System.out.println("\nВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!! \n");
 
     }
-
 
 }
