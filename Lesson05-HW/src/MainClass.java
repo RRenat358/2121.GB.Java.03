@@ -14,7 +14,6 @@ public class MainClass {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
 //        CyclicBarrier cyclicBarrier = new CyclicBarrier(CARS_COUNT);
-//        CyclicBarrier cyclicBarrier2 = new CyclicBarrier(CARS_COUNT);
         CountDownLatch countDownLatch = new CountDownLatch(CARS_COUNT);
         CountDownLatch countDownLatch2 = new CountDownLatch(CARS_COUNT);
 
