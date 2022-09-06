@@ -35,7 +35,7 @@ public class MainClass {
 
 //            int finalI = i;
             Integer finalI = i;
-
+/*
             new Thread(() -> {
                 try {
                     cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
@@ -45,20 +45,17 @@ public class MainClass {
                     e.printStackTrace();
                 }
             }).start();
+*/
 
-/*
             executorService.execute(() -> {
                 try {
                     cars[finalI] = new Car(race, 20 + (int) (Math.random() * 10));
-                    cyclicBarrier.await();
-//                    countDownLatch.countDown();
+//                    cyclicBarrier.await();
+                    countDownLatch.countDown();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
-*/
-
-
 
         }
 //        cyclicBarrier.await();
