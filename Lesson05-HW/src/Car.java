@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 public class Car implements Runnable {
     private static int CARS_COUNT;
 
-    ExecutorService executorService = Executors.newCachedThreadPool();
+//    ExecutorService executorService = Executors.newCachedThreadPool();
 
 
     static {
@@ -99,7 +99,6 @@ public class Car implements Runnable {
             }
         });
 */
-
 
 
     }

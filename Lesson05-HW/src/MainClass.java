@@ -16,6 +16,7 @@ public class MainClass {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         CyclicBarrier cyclicBarrier = new CyclicBarrier(CARS_COUNT);
         CountDownLatch countDownLatch = new CountDownLatch(CARS_COUNT);
+        CountDownLatch countDownLatch2 = new CountDownLatch(CARS_COUNT);
 
         List<String> listWin = Collections.synchronizedList(new ArrayList<>());
 
@@ -31,8 +32,8 @@ public class MainClass {
         for (int i = 0; i < cars.length; i++) {
 //            cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
 
-            int finalI = i;
-//            Integer finalI = i;
+//            int finalI = i;
+            Integer finalI = i;
 
             new Thread(() -> {
                 try {
@@ -70,17 +71,14 @@ public class MainClass {
         for (int i2 = 0; i2 < cars.length; i2++) {
 //            new Thread(cars[i]).start();
 
-            int finalI2 = i2;
-//            Integer finalI2 = i;
-
-
-
+//            int finalI2 = i2;
+            Integer finalI2 = i2;
 
             new Thread(() -> {
                 try {
                     cars[finalI2].run();
 //                    cyclicBarrier.await();
-                    countDownLatch.countDown();
+                    countDownLatch2.countDown();
 
                     listWin.add(cars[finalI2].getName());
                 } catch (Exception e) {
@@ -107,7 +105,7 @@ public class MainClass {
         }
 
 //        cyclicBarrier.await();
-        countDownLatch.await();
+        countDownLatch2.await();
 
 
         System.out.println(listWin.get(0) + " > WIN < ");
