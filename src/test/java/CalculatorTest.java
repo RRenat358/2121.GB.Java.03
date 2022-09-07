@@ -3,6 +3,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,20 +11,38 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
+
+
 public class CalculatorTest {
 
-    Calculator calculator1 = new Calculator();
+    //    Calculator calculator1 = new Calculator(); //initialization in @BeforeEach
+    Calculator calculator1;
     Calculator calculator2;
 
+    //mock
+    //void -- do nothing
+    //method -- null
+    Battery battery = Mockito.mock(Battery.class);
 
 
+    @BeforeEach
+    void init() {
+        System.out.println("initialization");
 
+        calculator1 = new Calculator();
+        calculator2 = new Calculator(battery);
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("test finished");
+    }
 
 
     @Test
     @DisplayName("test sum()")
     void testAddition() {
-        Assertions.assertEquals(10, calculator1.sum(3,7), "\n\nсумма должна быть 10");
+        Assertions.assertEquals(10, calculator1.sum(3, 7), "\n\nсумма должна быть 10");
     }
 
     @Test
@@ -67,11 +86,10 @@ public class CalculatorTest {
     }
 
 
-
-
-
-
-
+    //mock. For testing Calculator with Battery
+    void testWithBattery() {
+        Mockito.doReturn(50).when(battery.getPercent());
+    }
 
 
 }
