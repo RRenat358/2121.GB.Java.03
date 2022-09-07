@@ -5,7 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>JavaTwo0610</artifactId>
+<!--    <artifactId>JavaTwo0610</artifactId>-->
+    <artifactId>GB.Java.03</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
