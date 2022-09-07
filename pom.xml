@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-<!--    <artifactId>JavaTwo0610</artifactId>-->
     <artifactId>GB.Java.03</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -15,10 +14,24 @@
     </properties>
 
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.34.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.18.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.18.0</version>
         </dependency>
 
 
@@ -37,9 +50,15 @@
         </dependency>
 
 
-
-
-
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<!--
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+-->
 
     </dependencies>
     
