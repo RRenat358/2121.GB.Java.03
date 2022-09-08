@@ -17,7 +17,7 @@
 
     <Loggers>
         <Logger name="com.geekbrains" level="debug" />
-        <Root level="debug">
+        <Root level="info">
             <AppenderRef ref="STDOUT" />
             <AppenderRef ref="FILE" />
         </Root>
