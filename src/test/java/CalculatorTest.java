@@ -27,16 +27,25 @@ public class CalculatorTest {
 
     @BeforeEach
     void init() {
-        System.out.println("initialization");
+        System.out.println("test initialization");
 
         calculator1 = new Calculator();
         calculator2 = new Calculator(battery);
+
+        calculator1.setA(10);
+        calculator1.setB(7);
     }
 
     @AfterEach
     void tearDown() {
-        System.out.println("test finished");
+        System.out.println("test finished\n");
     }
+
+    @AfterAll
+    public static void end(){
+        System.out.println("\nEND");
+    }
+
 
 
     @Test
@@ -90,6 +99,23 @@ public class CalculatorTest {
     void testWithBattery() {
         Mockito.doReturn(50).when(battery.getPercent());
     }
+
+
+    @Test
+    public void testCalcInnerSum1(){
+        calculator1.setA(1);
+        calculator1.setB(3);
+        Assertions.assertEquals(4, calculator1.sum());
+    }
+
+
+    @Test
+    public void testCalcInnerSum2(){
+//        calculator1.setA(1); //initialization in @BeforeEach
+//        calculator1.setB(3); //initialization in @BeforeEach
+        Assertions.assertEquals(17, calculator1.sum());
+    }
+
 
 
 }
