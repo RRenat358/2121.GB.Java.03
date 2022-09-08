@@ -7,7 +7,6 @@ public class CurrentClass {
     private static final Logger logger = LogManager.getLogger(CurrentClass.class);
 
 
-
     //logLevels
 
     // Trace > Debug > Info > Warn > Error > Fatal
@@ -39,7 +38,12 @@ public class CurrentClass {
 
         //Logger, Appender, Layout
 
-
+        logger.trace("Trace");
+        logger.debug("Debug");
+        logger.info("Info");
+        logger.warn("Warn");
+        logger.error("Error");
+        logger.fatal("Fatal");
 
 
     }
