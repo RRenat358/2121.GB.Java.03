@@ -16,13 +16,13 @@ public class lesson06HW {
         int element2 = 1;
 
 
-
         System.out.println("==============================");
+
         System.out.println(Arrays.toString(arrayAfterElement(arr1, element1)));
         System.out.println(Arrays.toString(arrayAfterElement(arr2, element1)));
         System.out.println(Arrays.toString(arrayAfterElement(arr3, element1)));
         System.out.println(Arrays.toString(arrayAfterElement(arr4, element1)));
-//        System.out.println(Arrays.toString(arrayAfterElement(arr5, element1)));
+//        System.out.println(Arrays.toString(arrayAfterElement(arr5, element1))); //RuntimeException
 
         System.out.println("==============================");
         System.out.println(isCheckElementInArray(arr1, element1, element2));
