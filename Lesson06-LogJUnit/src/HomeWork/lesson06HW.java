@@ -55,8 +55,9 @@ public class lesson06HW {
 //            arr2 = (int[]) o;
 //        }
         Collections.reverse(Collections.singletonList(arr));
+        Collections.reverse(new ArrayList<>(Arrays.stream(arr).boxed().collect(Collectors.toList())));
         System.out.println(arr.equals(a));
-        System.out.println(arr);
+        System.out.println(Arrays.toString(arr));
 
 //        return list11;
         return arr2;
