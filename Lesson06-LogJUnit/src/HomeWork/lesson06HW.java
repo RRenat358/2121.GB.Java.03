@@ -18,13 +18,14 @@ public class lesson06HW {
         int a = 4;
 
 
-        System.out.println(arreyAfterFour(arr1, a));
+        System.out.println(Arrays.toString(arreyAfterFour(arr1, a)));
 
 
     }
 
     public static int[] arreyAfterFour(int[] arr, int a) {
         int[] arr2 = null;
+/*
 
 //        ArrayList<Integer> arrayList = new ArrayList<>();
 //        ArrayList<?> arrayList = new ArrayList<>();
@@ -46,20 +47,34 @@ public class lesson06HW {
 //        arr2 = Arrays.copyOf(arr, i);
 
 
+/*
         List<Integer> list11 = Arrays.stream(arr).boxed().collect(Collectors.toList());
         System.out.println(list11);
         System.out.println(list11.lastIndexOf(a));
+*/
+
 //        System.out.println(list11.subList(6 + 1, arr.length));
 //        System.out.println(list11.subList(list11.lastIndexOf(a) + 1, arr.length));
 //        for (Object o : list11){
 //            arr2 = (int[]) o;
 //        }
+
+/*
         Collections.reverse(Collections.singletonList(arr));
         Collections.reverse(new ArrayList<>(Arrays.stream(arr).boxed().collect(Collectors.toList())));
         System.out.println(arr.equals(a));
         System.out.println(Arrays.toString(arr));
+*/
 
-//        return list11;
+
+        for (int i = arr.length-1; i >=0 ; i--) {
+            int indexLast;
+            if (arr[i] == a) {
+                indexLast = i;
+                arr2 = Arrays.copyOfRange(arr, 6 + 1,arr.length);
+                return arr2;
+            }
+        }
         return arr2;
 
     }
