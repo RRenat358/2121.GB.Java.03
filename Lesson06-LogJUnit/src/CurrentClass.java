@@ -1,8 +1,18 @@
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+//import java.util.logging.FileHandler;
+//import java.util.logging.Handler;
+import java.io.IOException;
+
+
 
 public class CurrentClass {
+
+    //Simple Logger ~
+//    private static final Logger logger = Logger.getLogger("");
+
 
     private static final Logger logger = LogManager.getLogger(CurrentClass.class);
 
@@ -18,7 +28,7 @@ public class CurrentClass {
 
 
     //==============================
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         int logLevel = 2;
 
@@ -59,6 +69,35 @@ public class CurrentClass {
         logger.warn("Warn");
         logger.error("Error");
         logger.fatal("Fatal");
+
+
+        if(logger.isDebugEnabled()){
+            logger.debug(" =DebugEnabled= ");
+        }
+
+/*
+        //Simple Logger ~
+
+        logger.log(Level.INFO, "Info Message");
+        logger.setLevel(Level.WARNING);
+
+        logger.getHandlers()[0].setFormatter(new Formatter() {
+            @Override
+            public String format(LogRecord record) {
+                return record.getLevel() + "\t" + record.getMessage() + "\t" + record.getMillis() + "\n";
+            }
+        });
+
+        logger.log(Level.INFO, "Info Message");
+        logger.setLevel(Level.ALL);
+
+        Handler handler = new FileHandler("mylog.log", true);
+
+        logger.addHandler(handler);
+        logger.log(Level.WARNING, "Info Message");
+        logger.log(Level.CONFIG, "Info Message");
+        logger.log(Level.FINER, "Info Message");
+*/
 
 
     }
