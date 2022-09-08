@@ -46,13 +46,20 @@ public class lesson06HW {
         return null;
     }
 
-    public static boolean isCheckElementInArray(int[] arr, int target) {
+    public static boolean isCheckElementInArray(int[] arr, int target) throws CheckElementInArrayException {
         for (int element : arr) {
             if (element == target) {
                 return true;
             }
         }
-        return false;
+        throw new CheckElementInArrayException("\nRuntimeException = Check Element in Array = " + target);
+    }
+
+    public static class CheckElementInArrayException extends RuntimeException {
+        public CheckElementInArrayException(String message) {
+            super(message);
+        }
     }
 
 }
+
