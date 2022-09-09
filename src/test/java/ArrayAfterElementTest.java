@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static HomeWork.Lesson06HW.arrayAfterElement;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class ArrayAfterElementTest {
@@ -15,7 +17,7 @@ public class ArrayAfterElementTest {
     void test1() {
         int[] arrDfl = {9, 8, 4, 5, 6};
         int[] result = {5, 6};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
     @Test
@@ -23,7 +25,7 @@ public class ArrayAfterElementTest {
     void test2() {
         int[] arrDfl = {9, 4, 4, 5, 6};
         int[] result = {5, 6};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
     @Test
@@ -31,7 +33,7 @@ public class ArrayAfterElementTest {
     void test3() {
         int[] arrDfl = {4, 8, 9, 5, 6};
         int[] result = {8, 9, 5, 6};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
     @Test
@@ -39,21 +41,21 @@ public class ArrayAfterElementTest {
     void test4() {
         int[] arrDfl = {9, 8, 6, 5, 4};
         int[] result = {};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
     @Test
     @DisplayName("нет элемента, RuntimeException")
     void test5() {
         int[] arrDfl = {9, 8, 1, 5, 6};
-        Assertions.assertThrows(RuntimeException.class, () -> arrayAfterElement(arrDfl, element));
+        assertThrows(RuntimeException.class, () -> arrayAfterElement(arrDfl, element));
     }
 
     @Test
     @DisplayName("нет элемента, CheckElementInArrayException")
     void test6() {
         int[] arrDfl = {9, 8, 1, 5, 6};
-        Assertions.assertThrows(CheckElementInArrayException.class, () -> arrayAfterElement(arrDfl, element));
+        assertThrows(CheckElementInArrayException.class, () -> arrayAfterElement(arrDfl, element));
     }
 
     @Test
@@ -61,14 +63,14 @@ public class ArrayAfterElementTest {
     void test7_0() {
         int[] arrDfl = {0, 0, 4, 0, 0};
         int[] result = {0, 0};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
     @Test
     @DisplayName("пустой массив")
     void test7_1() {
         int[] arrDfl = {};
-        Assertions.assertThrows(RuntimeException.class, () -> arrayAfterElement(arrDfl, element));
+        assertThrows(RuntimeException.class, () -> arrayAfterElement(arrDfl, element));
     }
 
     @Test
@@ -76,7 +78,7 @@ public class ArrayAfterElementTest {
     void test8() {
         int[] arrDfl = {-5, -3, 4, -1, -2};
         int[] result = {-1, -2};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
     @Test
@@ -84,7 +86,7 @@ public class ArrayAfterElementTest {
     void test9() {
         int[] arrDfl = {-5000, -3000, 4, -8000, -4000};
         int[] result = {-8000, -4000};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
     @Test
@@ -92,7 +94,7 @@ public class ArrayAfterElementTest {
     void test10() {
         int[] arrDfl = {5000, 3000, 4, 8000, 4000};
         int[] result = {8000, 4000};
-        Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+        assertArrayEquals(result, arrayAfterElement(arrDfl, element));
     }
 
 
