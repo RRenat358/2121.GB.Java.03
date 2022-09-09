@@ -62,11 +62,19 @@ public class ArrayAfterElementTest {
 
     @Test
     @DisplayName("нули в массиве")
-    void test7() {
+    void test7_0() {
         int element = 4;
         int[] arrDfl = {0, 0, 4, 0, 0};
         int[] result = {0, 0};
         Assertions.assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+    }
+
+    @Test
+    @DisplayName("пустой массив")
+    void test7_1() {
+        int element = 4;
+        int[] arrDfl = {};
+        Assertions.assertThrows(RuntimeException.class, () -> arrayAfterElement(arrDfl, element));
     }
 
     @Test
