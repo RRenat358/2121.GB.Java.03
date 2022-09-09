@@ -2,6 +2,12 @@ import HomeWork.Lesson06HW;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 import static HomeWork.Lesson06HW.isCheckElementInArray;
 import static org.junit.jupiter.api.Assertions.*;
@@ -101,6 +107,49 @@ public class CheckElementInArrayTest {
     void test10() {
         int[] arr = {9000, 800, 4, 5000, 1, 600};
         assertTrue(isCheckElementInArray(arr, element1, element2));
+    }
+
+    @Test
+    @DisplayName("Timeout(5000)")
+    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
+    void test11() {
+        int arrLength = 10;
+        int[] arrBig = new int[arrLength];
+        for (int i = 0; i < arrLength; i++) {
+            arrBig[i] = 5;
+        }
+        System.out.println(Arrays.toString(arrBig));
+        int[] arr = {9000, 800, 4, 5000, 1, 600};
+        assertTrue(isCheckElementInArray(arr, element1, element2));
+    }
+
+    @MethodSource("arrayBig")
+    @ParameterizedTest
+    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
+    @DisplayName("Timeout(5000)")
+    void test12() {
+        int arrLength = 10;
+        int[] arrBig = new int[arrLength];
+        for (int i = 0; i < arrLength; i++) {
+            arrBig[i] = 5;
+        }
+        System.out.println(Arrays.toString(arrBig));
+        int[] arr = {9000, 800, 4, 5000, 1, 600};
+        assertTrue(isCheckElementInArray(arr, element1, element2));
+    }
+
+
+
+
+    public static int[] arrayBig() {
+        int arrLength = 10;
+        int[] arrBig = new int[arrLength];
+        for (int i = 0; i < arrLength; i++) {
+            arrBig[i] = 5;
+        }
+        System.out.println(Arrays.toString(arrBig));
+
+        return arrBig;
     }
 
 

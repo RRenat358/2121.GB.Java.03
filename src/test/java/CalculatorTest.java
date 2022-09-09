@@ -77,8 +77,8 @@ public class CalculatorTest {
     }
 
 
-    @MethodSource("dataForAddition")
     @ParameterizedTest
+    @MethodSource("dataForAddition")
     void testAdditionMultipleWithMethod(int a, int b, int result) {
         Assertions.assertEquals(result, calculator1.sum(a, b));
     }
