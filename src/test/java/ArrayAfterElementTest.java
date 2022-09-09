@@ -1,5 +1,5 @@
 import HomeWork.Lesson06HW.*;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ArrayAfterElementTest {
 
     int element = 4;
+
 
     @Test
     @DisplayName("1 элемент")
