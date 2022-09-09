@@ -1,7 +1,11 @@
-import HomeWork.Lesson06HW.*;
-import org.junit.jupiter.api.Assertions.*;
+import HomeWork.Lesson06HW.CheckElementInArrayException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import static HomeWork.Lesson06HW.arrayAfterElement;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -12,6 +16,20 @@ public class ArrayAfterElementTest {
 
     int element = 4;
 
+    @BeforeEach
+    void init() {
+        arrBig = arrayBig();
+    }
+
+    static int arrLength = 1_000_000;
+    static int[] arrBig = new int[arrLength];
+    public static int[] arrayBig() {
+        Random random = new Random();
+        for (int i = 0; i < arrLength; i++) {
+            arrBig[i] = random.nextInt(1000);
+        }
+        return arrBig;
+    }
 
     @Test
     @DisplayName("1 элемент")
@@ -96,6 +114,13 @@ public class ArrayAfterElementTest {
         int[] arrDfl = {5000, 3000, 4, 8000, 4000};
         int[] result = {8000, 4000};
         assertArrayEquals(result, arrayAfterElement(arrDfl, element));
+    }
+
+    @Test
+    @DisplayName("Timeout(500)")
+    @Timeout(value = 500, unit = TimeUnit.MILLISECONDS)
+    void test11() {
+        System.out.println("@Timeout(500). Ссылка на массив(объект) = " + arrayAfterElement(arrBig, element));
     }
 
 
