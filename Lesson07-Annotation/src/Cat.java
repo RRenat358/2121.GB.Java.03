@@ -68,16 +68,16 @@ public class Cat {
         return string1 + ", " + integer1;
     }
 
-    @MyAnnotation
+    @MyAnnotation(priority = 7)
     public String info11(){
         System.out.println("INFO1");
         return name;
     }
 
-    @MyAnnotation
+    @MyAnnotation(priority = 10)
     public String info12(){
         System.out.println("INFO2");
-        return name;
+        return name + " " + age + " " + weight;
     }
 
 
