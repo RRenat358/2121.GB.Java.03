@@ -50,7 +50,26 @@ public class Cat {
         this.weight = weight;
     }
 
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", age=" + age +
+                ", weight=" + weight +
+                '}';
+    }
 
+    public String info1(String name, String age) {
+        return name + ", " + age;
+    }
+
+//    @MyAnnotation(priority = 7)
+    public String info2(){
+        System.out.println("INFO1");
+
+        return name;
+    }
 
 
 }
