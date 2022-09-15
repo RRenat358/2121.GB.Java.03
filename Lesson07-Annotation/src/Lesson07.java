@@ -65,10 +65,10 @@ public class Lesson07 {
 
         for (Method method : catClass.getMethods()) {
             if (method.isAnnotationPresent(MyAnnotation.class)) {
-                if (method.getAnnotation(MyAnnotation.class).priority() > 5) {
+                if (method.getAnnotation(MyAnnotation.class).priority() > 4) {
 
                     System.out.println(method.getAnnotation(MyAnnotation.class).priority());
-                    method.invoke(catClass);
+                    method.invoke(cat1);
 
                 }
             }

@@ -69,9 +69,14 @@ public class Cat {
     }
 
     @MyAnnotation
-    public String info10(){
+    public String info11(){
         System.out.println("INFO1");
+        return name;
+    }
 
+    @MyAnnotation
+    public String info12(){
+        System.out.println("INFO2");
         return name;
     }
 
