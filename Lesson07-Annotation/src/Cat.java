@@ -60,12 +60,16 @@ public class Cat {
                 '}';
     }
 
-    public String info1(String name, String age) {
-        return name + ", " + age;
+    public String info1(String string1, String string2) {
+        return string1 + ", " + string2;
     }
 
-//    @MyAnnotation(priority = 7)
-    public String info2(){
+    public String info2(String string1, Integer integer1) {
+        return string1 + ", " + integer1;
+    }
+
+    @MyAnnotation
+    public String info10(){
         System.out.println("INFO1");
 
         return name;
