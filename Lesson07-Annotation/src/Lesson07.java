@@ -65,7 +65,7 @@ public class Lesson07 {
 
         for (Method method : catClass.getMethods()) {
             if (method.isAnnotationPresent(MyAnnotation.class)) {
-                if (method.getAnnotation(MyAnnotation.class).priority() > 4) {
+                if (method.getAnnotation(MyAnnotation.class).priority() > 8) {
 
                     System.out.println(method.getAnnotation(MyAnnotation.class).priority());
                     method.invoke(cat1);
