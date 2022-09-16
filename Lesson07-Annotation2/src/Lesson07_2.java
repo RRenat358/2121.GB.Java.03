@@ -10,11 +10,13 @@ public class Lesson07_2 {
         Class smallIntClass = int.class;
         Class smallIntArrClass = int[][].class;
 
+        System.out.println("=== 01 ===============================================");
         System.out.println(smallIntArrClass.getName() + " " + smallIntArrClass.getSimpleName());
 
         System.out.println(new int[][]{{1, 2}, {3, 4}});
 
 
+        System.out.println("=== 02 ===============================================");
         int modifiers = aClass.getModifiers();
         if (Modifier.isFinal(modifiers)) {
             System.out.println(aClass.getName() + " is final");
@@ -27,11 +29,13 @@ public class Lesson07_2 {
             System.out.println(aClass.getName() + " is public");
         }
 
+        System.out.println("=== 03 ===============================================");
         Class[] interfaces = aClass.getInterfaces();
         for (Class anInterface : interfaces) {
             System.out.println(anInterface.getName());
         }
 
+        System.out.println("=== 04 ===============================================");
         Class superClass = aClass.getSuperclass();
         System.out.println(superClass);
 
