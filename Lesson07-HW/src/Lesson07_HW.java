@@ -4,12 +4,13 @@
 
 public class Lesson07_HW {
 
-    public static void main(String[] args) {
 
-
-
+    @TestR
+    void sum(2,3) {
 
     }
+
+
 
 
 }
