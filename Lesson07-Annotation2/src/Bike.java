@@ -1,7 +1,6 @@
 
 
 
-
 public class Bike {
     public String model;
     public String serialNo;
@@ -62,4 +61,6 @@ public class Bike {
                 ", year=" + year +
                 '}';
     }
+
+
 }
