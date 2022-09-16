@@ -5,11 +5,25 @@
 public class MethodR {
 
 
+    @BeforeSuite
+    private String beforeSuite() {
+        System.out.println("MethodR = BeforeSuite");
+        return null;
+    }
+
+    @AfterSuite
+    private String afterSuite() {
+        System.out.println("MethodR = AfterSuite");
+        return null;
+    }
+
+
+
 
 
     @TestR
     private String prnt() {
-        System.out.println("Method");
+        System.out.println("MethodR = body");
         return null;
     }
 
