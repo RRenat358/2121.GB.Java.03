@@ -63,6 +63,7 @@ public class MethodR {
         return null;
     }
 
+/*
     @TestR(priority = 6)
     private String prnt8() {
         System.out.println("MethodR = Test" + ", " + "priority = 6 double");
@@ -74,6 +75,7 @@ public class MethodR {
         System.out.println("MethodR = Test" + ", " + "priority = 6 double");
         return null;
     }
+*/
 
 
 
