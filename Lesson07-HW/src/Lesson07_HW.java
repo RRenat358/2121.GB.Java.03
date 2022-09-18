@@ -15,12 +15,7 @@ public class Lesson07_HW {
         Method methodAfterSuite = null;
         List<Method> methodTestRList = new ArrayList<>();
 
-        Map<Integer, Method> methodList = new TreeMap<>();
-
         Method[] methods = methodR.getDeclaredMethods();
-
-        System.out.println(methods.length);
-//        System.out.println(Arrays.toString(methods));
 
 
         for (int i = 0; i < methods.length; i++) {
@@ -45,16 +40,9 @@ public class Lesson07_HW {
         }
 
         System.out.println("=================================");
-        for (int i = 1; i <= 10; i++) {
-            for (Method method : methods) {
-                if (method.isAnnotationPresent(TestR.class)) {
-                    if (method.getAnnotation(TestR.class).priority() == i) {
-                        method.setAccessible(true);
-                        method.invoke(methodR.getConstructor().newInstance());
-                    }
-                }
-            }
-        }
+        methodBeforeSuite.setAccessible(true);
+        methodBeforeSuite.invoke(methodR.getConstructor().newInstance());
+
         System.out.println("=================================");
         for (int i = 1; i <= 10; i++) {
             for (Method method : methodTestRList) {
@@ -64,6 +52,10 @@ public class Lesson07_HW {
                 }
             }
         }
+        System.out.println("=================================");
+        methodAfterSuite.setAccessible(true);
+        methodAfterSuite.invoke(methodR.getConstructor().newInstance());
+
         System.out.println("=================================");
 
 
