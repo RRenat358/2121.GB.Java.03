@@ -69,6 +69,12 @@ public class MethodR {
         return null;
     }
 
+    @TestR(priority = 6)
+    private String prnt9() {
+        System.out.println("MethodR = Test" + ", " + "priority = 6 double");
+        return null;
+    }
+
 
 
 }

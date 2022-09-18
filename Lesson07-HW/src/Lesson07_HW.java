@@ -1,10 +1,13 @@
+import org.apache.commons.collections.MultiMap;
+import org.apache.commons.collections.map.MultiValueMap;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
 public class Lesson07_HW {
 
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException, Exception {
 
         Class methodR = MethodR.class;
 
@@ -12,7 +15,8 @@ public class Lesson07_HW {
         Method methodAfterSuite = null;
         List<Method> methodTestRList = new ArrayList<>();
 //        List<Method> methodList = new ArrayList<>();
-        Map<Integer, Method> methodList = new LinkedHashMap<>();
+//        Map<Integer, Method> methodList = new LinkedHashMap<>();
+        MultiMap methodList = new MultiValueMap();
 //        TreeMap<Integer, Method> methodList = new TreeSet<>();
 //        HashMap<Integer, Method> methodList = new HashMap<>();
 //        LinkedHashMap<Integer, Method> methodList = new LinkedHashMap<>();
@@ -61,16 +65,13 @@ public class Lesson07_HW {
 
 */
 
-/*
-        for (Map.Entry<Integer, Method> e : methodList.entrySet()) {
 
-            Method value = e.getValue();
 
-            value.setAccessible(true);
-            value.invoke(methodR.getConstructor().newInstance());
-        }
+//        methodList.entrySet().forEach(entry -> {
+//            System.out.println((Collection<String>) methodList.keySet());
+//        });
+//
 
-*/
 
 
 
@@ -79,21 +80,33 @@ public class Lesson07_HW {
         System.out.println("=================================");
 
 
-//        Collections.emptySortedMap();
-//        Collections.emptySortedMap();
-//
-//        SortedMap<String, Date> s = Collections.emptySortedMap();
-//
-//
-
-
-//        Map<Integer, Method> methodList = new TreeMap<>();
         Map<Integer, Method> methodListSort = new TreeMap<>(methodList);
-//
-//
+
         methodListSort.entrySet().forEach(entry -> {
             System.out.println(entry.getKey() + " " + entry.getValue());
+            entry.getValue().setAccessible(true);
+            try {
+                entry.getValue().invoke(methodR.getConstructor().newInstance());
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (InstantiationException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
         });
+
+/*
+        for (Map.Entry<Integer, Method> e : methodList.entrySet()) {
+            Integer key = e.getKey();
+            Method value = e.getValue();
+            System.out.println(key + " " + value);
+            value.setAccessible(true);
+            value.invoke(methodR.getConstructor().newInstance());
+        }
+*/
 
 
 
