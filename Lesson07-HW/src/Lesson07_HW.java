@@ -13,6 +13,8 @@ public class Lesson07_HW {
         List<Method> methodTestRList = new ArrayList<>();
 //        List<Method> methodList = new ArrayList<>();
         Map<Integer, Method> methodList = new TreeMap<>();
+//        LinkedHashMap<Integer, Method> methodList = new LinkedHashMap<>();
+//        SortedMap<Integer, Method> methodList = Collections.emptySortedMap();
 
 
         Method[] methods = methodR.getDeclaredMethods();
@@ -69,6 +71,7 @@ public class Lesson07_HW {
 
             if (methods[i].isAnnotationPresent(TestR.class)) {
                 methodList.put(methods[i].getAnnotation(TestR.class).priority(), methods[i]);
+                System.out.println(methods[i].getAnnotation(TestR.class).priority());
             }
 
         }
@@ -85,9 +88,33 @@ public class Lesson07_HW {
         methodList.get(9).setAccessible(true);
         methodList.get(9).invoke(methodR.getConstructor().newInstance());
 
+        for (Map.Entry<Integer, Method> e : methodList.entrySet()) {
+            Integer key = e.getKey();
+            Method value = e.getValue();
+            System.out.println(key + " " + value);
+            value.setAccessible(true);
+            value.invoke(methodR.getConstructor().newInstance());
+        }
+
+        System.out.println("=================================");
+
+
+//        Collections.emptySortedMap();
+//        Collections.emptySortedMap();
+//
+//        SortedMap<String, Date> s = Collections.emptySortedMap();
+//
+//
 
 
 
+//        Map<Integer, Method> methodList = new TreeMap<>();
+        Map<Integer, Method> methodListSort = new TreeMap<>(methodList);
+
+
+        methodListSort.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
     }
 
 
