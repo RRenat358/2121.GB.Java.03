@@ -12,46 +12,16 @@ public class Lesson07_HW {
         Method methodAfterSuite = null;
         List<Method> methodTestRList = new ArrayList<>();
 //        List<Method> methodList = new ArrayList<>();
-        Map<Integer, Method> methodList = new TreeMap<>();
+        Map<Integer, Method> methodList = new LinkedHashMap<>();
+//        TreeMap<Integer, Method> methodList = new TreeSet<>();
+//        HashMap<Integer, Method> methodList = new HashMap<>();
 //        LinkedHashMap<Integer, Method> methodList = new LinkedHashMap<>();
 //        SortedMap<Integer, Method> methodList = Collections.emptySortedMap();
-
 
         Method[] methods = methodR.getDeclaredMethods();
 
         System.out.println(methods.length);
 //        System.out.println(Arrays.toString(methods));
-
-
-/*
-        for (Method method : methods) {
-
-
-        }
-*/
-
-
-/*
-        for (int i = 0; i < methods.length; i++) {
-            if (methods[i].isAnnotationPresent(BeforeSuite.class)) {
-                if (methodList.get(0) != null) {
-                    //exeption
-                }
-                methodList.add(0, methods[i]);
-            }
-
-            if (methods[i].isAnnotationPresent(AfterSuite.class)) {
-                if (methodList.get(methods.length) != null) {
-                    //exeption
-                }
-                methodList.add(methods.length, methods[i]);
-            }
-
-            if (methods[i].isAnnotationPresent(TestR.class)) {
-                methodList.add(methods[i]);
-            }
-        }
-*/
 
 
         for (int i = 0; i < methods.length; i++) {
@@ -76,6 +46,7 @@ public class Lesson07_HW {
 
         }
 
+/*
 //        methodList.get(3).invoke(methodR);
         System.out.println(methodList.equals(3));
         System.out.println(methodList.entrySet().equals(3));
@@ -88,13 +59,22 @@ public class Lesson07_HW {
         methodList.get(9).setAccessible(true);
         methodList.get(9).invoke(methodR.getConstructor().newInstance());
 
+*/
+
+/*
         for (Map.Entry<Integer, Method> e : methodList.entrySet()) {
-            Integer key = e.getKey();
+
             Method value = e.getValue();
-            System.out.println(key + " " + value);
+
             value.setAccessible(true);
             value.invoke(methodR.getConstructor().newInstance());
         }
+
+*/
+
+
+
+
 
         System.out.println("=================================");
 
@@ -107,15 +87,20 @@ public class Lesson07_HW {
 //
 
 
-
 //        Map<Integer, Method> methodList = new TreeMap<>();
         Map<Integer, Method> methodListSort = new TreeMap<>(methodList);
-
-
+//
+//
         methodListSort.entrySet().forEach(entry -> {
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
+
+
+
+
+
+
+
+
     }
-
-
 }
