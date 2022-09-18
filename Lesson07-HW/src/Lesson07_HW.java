@@ -1,5 +1,4 @@
-import org.apache.commons.collections.MultiMap;
-import org.apache.commons.collections.map.MultiValueMap;
+
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,14 +20,16 @@ public class Lesson07_HW {
         for (int i = 0; i < methods.length; i++) {
             if (methods[i].isAnnotationPresent(BeforeSuite.class)) {
                 if (methodBeforeSuite != null) {
-                    //exeption
+                    //exception
+                    throw new MyRuntimeException("\nRuntimeException = @BeforeSuite -- not single");
                 }
                 methodBeforeSuite = methods[i];
             }
 
             if (methods[i].isAnnotationPresent(AfterSuite.class)) {
                 if (methodAfterSuite != null) {
-                    //exeption
+                    //exception
+                    throw new MyRuntimeException("\nRuntimeException = @AfterSuite -- not single");
                 }
                 methodAfterSuite = methods[i];
             }
@@ -60,4 +61,12 @@ public class Lesson07_HW {
 
 
     }
+
+    public static class MyRuntimeException extends RuntimeException {
+        public MyRuntimeException(String message) {
+            super(message);
+        }
+    }
+
 }
+

@@ -16,6 +16,12 @@ public class MethodR {
         return null;
     }
 
+    @AfterSuite
+    private String afterSuite2() {
+        System.out.println("MethodR = AfterSuite -- double");
+        return null;
+    }
+
 
     @TestR // (priority = 5) default
     private String prnt0() {
