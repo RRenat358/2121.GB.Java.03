@@ -17,7 +17,6 @@ public class Lesson07_HW {
 
         Map<Integer, Method> methodList = new TreeMap<>();
 
-
         Method[] methods = methodR.getDeclaredMethods();
 
         System.out.println(methods.length);
