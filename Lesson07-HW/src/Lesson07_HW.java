@@ -25,64 +25,46 @@ public class Lesson07_HW {
 
         for (int i = 0; i < methods.length; i++) {
             if (methods[i].isAnnotationPresent(BeforeSuite.class)) {
-                if (methodList.get(0) != null) {
+                if (methodBeforeSuite != null) {
                     //exeption
                 }
-                methodList.put(-1, methods[i]);
+                methodBeforeSuite = methods[i];
             }
 
             if (methods[i].isAnnotationPresent(AfterSuite.class)) {
-                if (methodList.get(methods.length) != null) {
+                if (methodAfterSuite != null) {
                     //exeption
                 }
-                methodList.put(11, methods[i]);
+                methodAfterSuite = methods[i];
             }
 
             if (methods[i].isAnnotationPresent(TestR.class)) {
-                methodList.put(methods[i].getAnnotation(TestR.class).priority(), methods[i]);
-                System.out.println(methods[i].getAnnotation(TestR.class).priority());
+                methodTestRList.add(methods[i]);
             }
 
         }
 
-/*
-//        methodList.get(3).invoke(methodR);
-        System.out.println(methodList.equals(3));
-        System.out.println(methodList.entrySet().equals(3));
-        System.out.println(methodList.get(3));
-
-//        methodList.get(3).setAccessible(true);
-        methodList.get(3).setAccessible(true);
-        methodList.get(3).invoke(methodR.getConstructor().newInstance());
-
-        methodList.get(9).setAccessible(true);
-        methodList.get(9).invoke(methodR.getConstructor().newInstance());
-
-*/
-        for (Map.Entry<Integer, Method> e : methodList.entrySet()) {
-            Method value = e.getValue();
-            value.setAccessible(true);
-            value.invoke(methodR.getConstructor().newInstance());
-        }
-
-
         System.out.println("=================================");
-
-
-/*
         for (int i = 1; i <= 10; i++) {
-                if(methodList.get(i).isAnnotationPresent(TestR.class)){
-                    if(methodList.get(i)..getAnnotation(TestR.class).priority() == i){
-                        method.invoke(methodR);
+            for (Method method : methods) {
+                if (method.isAnnotationPresent(TestR.class)) {
+                    if (method.getAnnotation(TestR.class).priority() == i) {
+                        method.setAccessible(true);
+                        method.invoke(methodR.getConstructor().newInstance());
                     }
                 }
             }
         }
-*/
-
-
-
-
+        System.out.println("=================================");
+        for (int i = 1; i <= 10; i++) {
+            for (Method method : methodTestRList) {
+                if (method.getAnnotation(TestR.class).priority() == i) {
+                    method.setAccessible(true);
+                    method.invoke(methodR.getConstructor().newInstance());
+                }
+            }
+        }
+        System.out.println("=================================");
 
 
     }

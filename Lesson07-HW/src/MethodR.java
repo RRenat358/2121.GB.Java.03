@@ -1,7 +1,6 @@
 
 
 
-
 public class MethodR {
 
 
@@ -18,12 +17,15 @@ public class MethodR {
     }
 
 
-
-
-
     @TestR // (priority = 5) default
-    private String prnt1() {
+    private String prnt0() {
         System.out.println("MethodR = Test" + ", " + "priority = 5 default");
+        return null;
+    }
+
+    @TestR(priority = 5)
+    private String prnt1() {
+        System.out.println("MethodR = Test" + ", " + "priority = 5 set");
         return null;
     }
 
@@ -63,7 +65,6 @@ public class MethodR {
         return null;
     }
 
-/*
     @TestR(priority = 6)
     private String prnt8() {
         System.out.println("MethodR = Test" + ", " + "priority = 6 double");
@@ -75,8 +76,18 @@ public class MethodR {
         System.out.println("MethodR = Test" + ", " + "priority = 6 double");
         return null;
     }
-*/
 
+    @TestOther(priority = 10)
+    private String prnt10() {
+        System.out.println("MethodR = TestOther" + ", " + "priority = 10");
+        return null;
+    }
+
+    //not @TestR
+    private String prnt11() {
+        System.out.println("MethodR = not @TestR" + ", " + "priority = null");
+        return null;
+    }
 
 
 }
