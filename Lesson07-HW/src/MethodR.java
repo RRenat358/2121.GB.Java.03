@@ -16,7 +16,7 @@ public class MethodR {
         return null;
     }
 
-    @AfterSuite
+//    @AfterSuite
     private String afterSuite2() {
         System.out.println("MethodR = AfterSuite -- double");
         return null;

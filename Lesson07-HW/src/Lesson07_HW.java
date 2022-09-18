@@ -1,12 +1,12 @@
 
 
-import java.lang.reflect.InvocationTargetException;
+
 import java.lang.reflect.Method;
 import java.util.*;
 
 public class Lesson07_HW {
 
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException, Exception {
+    public static void main(String[] args) throws Exception {
 
         Class methodR = MethodR.class;
 
