@@ -1,9 +1,10 @@
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
 public class Lesson07_HW {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException {
 
         Class methodR = MethodR.class;
 
@@ -17,7 +18,7 @@ public class Lesson07_HW {
         Method[] methods = methodR.getDeclaredMethods();
 
         System.out.println(methods.length);
-        System.out.println(Arrays.toString(methods));
+//        System.out.println(Arrays.toString(methods));
 
 
 /*
@@ -56,14 +57,14 @@ public class Lesson07_HW {
                 if (methodList.get(0) != null) {
                     //exeption
                 }
-                methodList.put(-1,methods[i]);
+                methodList.put(-1, methods[i]);
             }
 
             if (methods[i].isAnnotationPresent(AfterSuite.class)) {
                 if (methodList.get(methods.length) != null) {
                     //exeption
                 }
-                methodList.put(11,methods[i]);
+                methodList.put(11, methods[i]);
             }
 
             if (methods[i].isAnnotationPresent(TestR.class)) {
@@ -71,6 +72,20 @@ public class Lesson07_HW {
             }
 
         }
+
+//        methodList.get(3).invoke(methodR);
+        System.out.println(methodList.equals(3));
+        System.out.println(methodList.entrySet().equals(3));
+        System.out.println(methodList.get(3));
+
+//        methodList.get(3).setAccessible(true);
+        methodList.get(3).setAccessible(true);
+        methodList.get(3).invoke(methodR.getConstructor().newInstance());
+
+        methodList.get(9).setAccessible(true);
+        methodList.get(9).invoke(methodR.getConstructor().newInstance());
+
+
 
 
     }
