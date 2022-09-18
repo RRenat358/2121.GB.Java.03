@@ -1,4 +1,3 @@
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.*;
 
@@ -68,8 +67,9 @@ public class Lesson07_HW {
             }
 
             if (methods[i].isAnnotationPresent(TestR.class)) {
-                methodList.put(methods[i].getAnnotation(TestR.class).priorytet(), methods[i]);
+                methodList.put(methods[i].getAnnotation(TestR.class).priority(), methods[i]);
             }
+
         }
 
 
