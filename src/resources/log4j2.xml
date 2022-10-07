@@ -16,8 +16,9 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.geekbrains" level="debug" />
-        <Root level="info">
+        <Logger name="com.geekbrains" />
+<!--        <Root level="info">-->
+        <Root level="debug">
             <AppenderRef ref="STDOUT" />
             <AppenderRef ref="FILE" />
         </Root>

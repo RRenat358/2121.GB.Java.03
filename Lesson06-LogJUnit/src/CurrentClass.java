@@ -1,4 +1,5 @@
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -7,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 
 
-
+@Log4j2
 public class CurrentClass {
 
     //Simple Logger ~
