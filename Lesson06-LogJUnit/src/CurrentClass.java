@@ -74,6 +74,8 @@ public class CurrentClass {
 
         if(logger.isDebugEnabled()){
             logger.debug(" =DebugEnabled= ");
+        } else {
+            System.out.println("0");
         }
 
 /*
